@@ -101,7 +101,7 @@ export const AuditForm: React.FC = () => {
           email: formData.email.trim(),
           phone: formData.phone.trim(),
           websiteUrl: formData.websiteUrl.trim(),
-          instagramUrl: formData.instagramUrl.trim(),
+          instagramUrl: (formData.instagramUrl || "").trim(),
           businessType: formData.businessType,
           mainGoal: formData.mainGoal,
         }),
