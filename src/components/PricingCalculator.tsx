@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Button } from "./Button";
 import { submitQuoteRequest } from "../services/apiService";
-import { Check, Sparkles, Calculator, Send, AlertCircle } from "lucide-react";
+import { Check, Sparkles, Calculator, AlertCircle } from "lucide-react";
 
 export const PricingCalculator: React.FC = () => {
   const [businessType, setBusinessType] = useState<string>("Restaurant");
+
   const [pagesRange, setPagesRange] = useState<string>("4–6");
+
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([
     "Telegram",
     "Booking",
@@ -15,8 +17,10 @@ export const PricingCalculator: React.FC = () => {
   const [clientName, setClientName] = useState("");
   const [clientEmail, setClientEmail] = useState("");
   const [clientPhone, setClientPhone] = useState("");
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedId, setSubmittedId] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const businessTypes = [
     "Restaurant",
@@ -32,26 +36,55 @@ export const PricingCalculator: React.FC = () => {
   const pageOptions = ["1–3", "4–6", "7–10", "10+"];
 
   const featureOptions = [
-    { id: "Telegram", label: "Telegram Direct Ordering / Lead Routing", cost: 1500 },
-    { id: "Booking", label: "Interactive Booking & Appointments", cost: 2500 },
-    { id: "Gallery", label: "High-Res Curated Media Gallery", cost: 1000 },
-    { id: "Payment", label: "Payment Gateway Integration (Stripe/Razorpay)", cost: 3000 },
-    { id: "Admin Dashboard", label: "Admin Content / Inquiry Management", cost: 4500 },
-    { id: "SEO", label: "Comprehensive Technical & Schema SEO", cost: 2000 },
-    { id: "Analytics", label: "Conversion Tracking & Analytics Funnels", cost: 1500 },
+    {
+      id: "Telegram",
+      label: "Telegram Direct Ordering / Lead Routing",
+      cost: 1500,
+    },
+    {
+      id: "Booking",
+      label: "Interactive Booking & Appointments",
+      cost: 2500,
+    },
+    {
+      id: "Gallery",
+      label: "High-Res Curated Media Gallery",
+      cost: 1000,
+    },
+    {
+      id: "Payment",
+      label: "Payment Gateway Integration (Stripe/Razorpay)",
+      cost: 3000,
+    },
+    {
+      id: "Admin Dashboard",
+      label: "Admin Content / Inquiry Management",
+      cost: 4500,
+    },
+    {
+      id: "SEO",
+      label: "Comprehensive Technical & Schema SEO",
+      cost: 2000,
+    },
+    {
+      id: "Analytics",
+      label: "Conversion Tracking & Analytics Funnels",
+      cost: 1500,
+    },
   ];
 
   const toggleFeature = (featureId: string) => {
     setSelectedFeatures((prev) =>
       prev.includes(featureId)
         ? prev.filter((item) => item !== featureId)
-        : [...prev, featureId]
+        : [...prev, featureId],
     );
   };
 
   // Compute realistic pricing range
   const calculateEstimate = () => {
     let base = 4999;
+
     if (pagesRange === "4–6") base = 8999;
     if (pagesRange === "7–10") base = 14999;
     if (pagesRange === "10+") base = 21999;
@@ -66,19 +99,25 @@ export const PricingCalculator: React.FC = () => {
     if (totalEstimate < 10000) {
       return {
         tier: "Starter Tier",
-        rangeText: `₹${totalEstimate.toLocaleString()} – ₹${(totalEstimate + 3000).toLocaleString()}`,
+        rangeText: `₹${totalEstimate.toLocaleString()} – ₹${(
+          totalEstimate + 3000
+        ).toLocaleString()}`,
         badge: "₹4,999+ Base",
       };
     } else if (totalEstimate < 20000) {
       return {
         tier: "Business Tier",
-        rangeText: `₹${totalEstimate.toLocaleString()} – ₹${(totalEstimate + 5000).toLocaleString()}`,
+        rangeText: `₹${totalEstimate.toLocaleString()} – ₹${(
+          totalEstimate + 5000
+        ).toLocaleString()}`,
         badge: "₹9,999+ Base",
       };
     } else {
       return {
         tier: "Premium Tier",
-        rangeText: `₹${totalEstimate.toLocaleString()} – ₹${(totalEstimate + 8000).toLocaleString()}`,
+        rangeText: `₹${totalEstimate.toLocaleString()} – ₹${(
+          totalEstimate + 8000
+        ).toLocaleString()}`,
         badge: "₹19,999+ Base",
       };
     }
@@ -86,29 +125,91 @@ export const PricingCalculator: React.FC = () => {
 
   const estimate = calculateEstimate();
 
+  // Netlify form encoder
+  const encode = (data: Record<string, string>) =>
+    Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]),
+      )
+      .join("&");
+
   const handleQuoteSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setErrorMessage("");
+
+    if (!clientName.trim() || !clientEmail.trim()) {
+      setErrorMessage("Please enter your name and email address.");
+      return;
+    }
+
     setIsSubmitting(true);
+
     try {
+      /*
+       * STEP 1:
+       * Send the Start a Project form to Netlify Forms
+       */
+      const netlifyResponse = await fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: encode({
+          "form-name": "netweb-start-project",
+          "bot-field": "",
+
+          clientName: clientName.trim(),
+          clientEmail: clientEmail.trim(),
+          clientPhone: clientPhone.trim(),
+
+          businessType: businessType,
+          pages: pagesRange,
+
+          features: selectedFeatures.join(", ") || "Standard Launch Foundation",
+
+          estimatedRange: estimate.rangeText,
+          tier: estimate.tier,
+        }),
+      });
+
+      if (!netlifyResponse.ok) {
+        throw new Error(
+          "Unable to submit your project request. Please try again.",
+        );
+      }
+
+      /*
+       * STEP 2:
+       * Keep the existing local project/quote saving functionality
+       */
       const res = await submitQuoteRequest({
         businessType,
         pages: pagesRange,
         features: selectedFeatures,
         estimatedRange: estimate.rangeText,
-        clientName,
-        clientEmail,
-        clientPhone,
+        clientName: clientName.trim(),
+        clientEmail: clientEmail.trim(),
+        clientPhone: clientPhone.trim(),
       });
+
       setSubmittedId(res.id);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
+
+      setErrorMessage(
+        err?.message || "Failed to submit project request. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="w-full bg-[#101310] border border-white/[0.08] rounded-2xl p-6 sm:p-10 shadow-2xl relative overflow-hidden" id="pricing-estimator-container">
+    <div
+      className="w-full bg-[#101310] border border-white/[0.08] rounded-2xl p-6 sm:p-10 shadow-2xl relative overflow-hidden"
+      id="pricing-estimator-container"
+    >
       <div className="absolute top-0 right-0 w-80 h-80 bg-radial-gradient pointer-events-none" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -119,9 +220,11 @@ export const PricingCalculator: React.FC = () => {
             <label className="text-xs font-bold text-white uppercase tracking-wider font-mono block mb-3">
               1. Select Your Business Type
             </label>
+
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {businessTypes.map((type) => {
                 const active = businessType === type;
+
                 return (
                   <button
                     key={type}
@@ -145,9 +248,11 @@ export const PricingCalculator: React.FC = () => {
             <label className="text-xs font-bold text-white uppercase tracking-wider font-mono block mb-3">
               2. Number of Custom Pages / Sections
             </label>
+
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {pageOptions.map((opt) => {
                 const active = pagesRange === opt;
+
                 return (
                   <button
                     key={opt}
@@ -171,9 +276,11 @@ export const PricingCalculator: React.FC = () => {
             <label className="text-xs font-bold text-white uppercase tracking-wider font-mono block mb-3">
               3. Functional Capabilities Needed
             </label>
+
             <div className="space-y-2">
               {featureOptions.map((feat) => {
                 const selected = selectedFeatures.includes(feat.id);
+
                 return (
                   <button
                     key={feat.id}
@@ -195,6 +302,7 @@ export const PricingCalculator: React.FC = () => {
                       >
                         {selected && <Check className="w-3 h-3 stroke-[3]" />}
                       </div>
+
                       <span className="font-medium">{feat.label}</span>
                     </div>
                   </button>
@@ -212,6 +320,7 @@ export const PricingCalculator: React.FC = () => {
                 <Calculator className="w-3.5 h-3.5" />
                 {estimate.tier}
               </span>
+
               <span className="text-[11px] font-mono text-[#A7ADA5]">
                 {estimate.badge}
               </span>
@@ -220,27 +329,44 @@ export const PricingCalculator: React.FC = () => {
             <p className="text-xs text-[#A7ADA5] uppercase tracking-wider font-mono">
               Estimated Investment Range
             </p>
+
             <h3 className="text-3xl sm:text-4xl font-extrabold text-white font-['Space_Grotesk'] my-2 tracking-tight">
               {estimate.rangeText}
             </h3>
 
             <p className="text-xs text-[#A3FF12] font-semibold flex items-center gap-1.5 bg-[#080A08] p-3 rounded border border-white/10 my-4">
               <Sparkles className="w-4 h-4 shrink-0" />
-              <span>Includes bespoke design, responsive code, and Core Web Vitals optimization.</span>
+
+              <span>
+                Includes bespoke design, responsive code, and Core Web Vitals
+                optimization.
+              </span>
             </p>
 
             {/* Selected Summary chips */}
             <div className="space-y-1.5 text-xs text-[#A7ADA5] mb-6">
-              <p><strong className="text-white">Business:</strong> {businessType}</p>
-              <p><strong className="text-white">Scope:</strong> {pagesRange} Custom Pages</p>
-              <p><strong className="text-white">Features:</strong> {selectedFeatures.join(", ") || "Standard Launch Foundation"}</p>
+              <p>
+                <strong className="text-white">Business:</strong> {businessType}
+              </p>
+
+              <p>
+                <strong className="text-white">Scope:</strong> {pagesRange}{" "}
+                Custom Pages
+              </p>
+
+              <p>
+                <strong className="text-white">Features:</strong>{" "}
+                {selectedFeatures.join(", ") || "Standard Launch Foundation"}
+              </p>
             </div>
 
-            {/* Prompt Mandated Notice */}
+            {/* Notice */}
             <div className="p-3 rounded bg-[#080A08]/60 border border-white/[0.08] text-[11px] text-[#A7ADA5] mb-6 flex items-start gap-2">
               <AlertCircle className="w-4 h-4 text-[#A3FF12] shrink-0 mt-0.5" />
+
               <p>
-                <strong>Important:</strong> Estimated project range. Final pricing depends on requirements.
+                <strong>Important:</strong> Estimated project range. Final
+                pricing depends on requirements.
               </p>
             </div>
           </div>
@@ -251,35 +377,73 @@ export const PricingCalculator: React.FC = () => {
               <div className="w-8 h-8 rounded-full bg-[#A3FF12] text-[#080A08] flex items-center justify-center mx-auto">
                 <Check className="w-4 h-4 stroke-[3]" />
               </div>
-              <p className="font-bold text-white text-sm">Quote Request Saved</p>
-              <p className="text-xs text-[#A7ADA5]">
-                Reference ID: <span className="font-mono text-[#A3FF12]">{submittedId}</span>
+
+              <p className="font-bold text-white text-sm">
+                Quote Request Saved
               </p>
+
               <p className="text-xs text-[#A7ADA5]">
-                We will email a structured proposal based on your selected parameters.
+                Reference ID:{" "}
+                <span className="font-mono text-[#A3FF12]">{submittedId}</span>
+              </p>
+
+              <p className="text-xs text-[#A7ADA5]">
+                We will email a structured proposal based on your selected
+                parameters.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleQuoteSubmit} className="space-y-3 pt-2">
+            <form
+              name="netweb-start-project"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleQuoteSubmit}
+              className="space-y-3 pt-2"
+            >
+              {/* Netlify form identification */}
+              <input
+                type="hidden"
+                name="form-name"
+                value="netweb-start-project"
+              />
+
+              {/* Netlify honeypot */}
               <input
                 type="text"
+                name="bot-field"
+                style={{ display: "none" }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
+              {/* Name */}
+              <input
+                type="text"
+                name="clientName"
                 required
                 placeholder="Your Name"
                 value={clientName}
                 onChange={(e) => setClientName(e.target.value)}
                 className="w-full bg-[#080A08] border border-white/10 focus:border-[#A3FF12] rounded px-3 py-2 text-xs text-white focus:outline-none placeholder:text-white/30"
               />
+
               <div className="grid grid-cols-2 gap-2">
+                {/* Email */}
                 <input
                   type="email"
+                  name="clientEmail"
                   required
                   placeholder="Email Address"
                   value={clientEmail}
                   onChange={(e) => setClientEmail(e.target.value)}
                   className="w-full bg-[#080A08] border border-white/10 focus:border-[#A3FF12] rounded px-3 py-2 text-xs text-white focus:outline-none placeholder:text-white/30"
                 />
+
+                {/* Phone */}
                 <input
                   type="tel"
+                  name="clientPhone"
                   placeholder="Phone / Telegram"
                   value={clientPhone}
                   onChange={(e) => setClientPhone(e.target.value)}
@@ -287,6 +451,16 @@ export const PricingCalculator: React.FC = () => {
                 />
               </div>
 
+              {/* Error message */}
+              {errorMessage && (
+                <div className="flex items-start gap-2 rounded-md border border-red-500/30 bg-red-500/10 px-3 py-2">
+                  <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+
+                  <p className="text-xs text-red-300">{errorMessage}</p>
+                </div>
+              )}
+
+              {/* Submit */}
               <Button
                 type="submit"
                 variant="primary"
