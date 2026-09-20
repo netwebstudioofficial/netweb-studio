@@ -1,0 +1,146 @@
+<svg width="1000" height="440" viewBox="0 0 1000 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- PURE TRANSPARENT BACKGROUND (no rect, no fill) -->
+
+  <g id="netweb-studio-brand">
+    <!-- ================= 3D ISOMETRIC RIBBON EMBLEM ================= -->
+    <!-- Center coordinate: X=170, Y=220 -->
+    <g id="emblem" transform="translate(45, 50)">
+      <!-- Left Upper Wing / Chamfered Ridge (White) -->
+      <path 
+        d="M 108 38 
+           L 168 4 
+           C 171 2.5, 174 2.5, 177 4 
+           L 177 82 
+           L 142 102 
+           L 108 82 
+           Z" 
+        fill="#FFFFFF" 
+      />
+
+      <!-- Far-Left Vertical Pillar (White) -->
+      <path 
+        d="M 50 108 
+           L 100 79 
+           L 100 226 
+           L 50 197 
+           C 46 195, 44 191, 44 187 
+           L 44 118 
+           C 44 114, 46 110, 50 108 
+           Z" 
+        fill="#FFFFFF" 
+      />
+
+      <!-- Left Lower Inward Fold (White) -->
+      <path 
+        d="M 108 232 
+           L 177 272 
+           L 177 322 
+           C 174 323.5, 171 323.5, 168 322 
+           L 108 288 
+           Z" 
+        fill="#FFFFFF" 
+      />
+
+      <!-- Center Diagonal Traversing Beam of N (White) -->
+      <path 
+        d="M 108 96 
+           L 185 52 
+           L 262 188 
+           L 185 232 
+           Z" 
+        fill="#FFFFFF" 
+      />
+
+      <!-- Bottom-Right Foundation Anchor (White) -->
+      <path 
+        d="M 185 277 
+           L 254 237 
+           L 254 318 
+           C 254 322, 251 326, 247 328 
+           L 185 364 
+           Z" 
+        fill="#FFFFFF" 
+      />
+
+      <!-- Right Lower Stem Pillar (White) -->
+      <path 
+        d="M 262 136 
+           L 312 107 
+           C 316 105, 318 109, 318 113 
+           L 318 246 
+           C 318 250, 316 254, 312 256 
+           L 262 285 
+           Z" 
+        fill="#FFFFFF" 
+      />
+
+      <!-- TOP-RIGHT NEON-LIME ACCENT FACET (#A3FF12) -->
+      <path 
+        d="M 262 30 
+           L 312 1 
+           C 316 -1.2, 318 2, 318 6 
+           L 318 90 
+           C 318 94, 316 97.5, 312 99.5 
+           L 262 128.5 
+           C 259 130.2, 256 128, 256 124 
+           L 256 41 
+           C 256 37, 259 31.8, 262 30 
+           Z" 
+        fill="#A3FF12" 
+      />
+    </g>
+
+    <!-- ================= WORDMARK ================= -->
+    <g id="wordmark" transform="translate(420, 130)">
+      <!-- "NETWEB" Bold Vector Outlines -->
+      <!-- N -->
+      <path d="M 0 0 L 25 0 L 68 86 L 70 86 L 70 0 L 93 0 L 93 112 L 68 112 L 25 26 L 23 26 L 23 112 L 0 112 Z" fill="#FFFFFF" />
+
+      <!-- E -->
+      <path d="M 111 0 L 192 0 C 195 0, 199 3, 199 7 L 199 22 C 199 26, 195 29, 192 29 L 135 29 L 135 42 L 184 42 C 188 42, 191 45, 191 49 L 191 63 C 191 67, 188 70, 184 70 L 135 70 L 135 83 L 194 83 C 197 83, 201 86, 201 90 L 201 105 C 201 109, 197 112, 194 112 L 111 112 Z" fill="#FFFFFF" />
+
+      <!-- T -->
+      <path d="M 213 0 L 303 0 C 307 0, 310 3, 310 7 L 310 22 C 310 26, 307 29, 303 29 L 270 29 L 270 112 L 246 112 L 246 29 L 213 29 C 209 29, 206 26, 206 22 L 206 7 C 206 3, 209 0, 213 0 Z" fill="#FFFFFF" />
+
+      <!-- W -->
+      <path d="M 315 0 L 338 0 L 363 79 L 365 79 L 389 0 L 412 0 L 436 79 L 438 79 L 463 0 L 486 0 L 450 112 L 425 112 L 401 34 L 399 34 L 375 112 L 350 112 Z" fill="#FFFFFF" />
+
+      <!-- E -->
+      <path d="M 499 0 L 580 0 C 583 0, 587 3, 587 7 L 587 22 C 587 26, 583 29, 580 29 L 523 29 L 523 42 L 572 42 C 576 42, 579 45, 579 49 L 579 63 C 579 67, 576 70, 572 70 L 523 70 L 523 83 L 582 83 C 585 83, 589 86, 589 90 L 589 105 C 589 109, 585 112, 582 112 L 499 112 Z" fill="#FFFFFF" />
+
+      <!-- B -->
+      <path d="M 601 0 L 655 0 C 675 0, 689 11, 689 29 C 689 40, 681 49, 669 53 C 684 56, 693 67, 693 83 C 693 102, 677 112, 655 112 L 601 112 Z 
+               M 625 24 L 625 44 L 651 44 C 659 44, 665 40, 665 34 C 665 28, 659 24, 651 24 Z 
+               M 625 67 L 625 89 L 653 89 C 662 89, 667 85, 667 78 C 667 71, 662 67, 653 67 Z" fill="#FFFFFF" />
+
+      <!-- TM Superscript -->
+      <g transform="translate(702, 2)">
+        <!-- T -->
+        <path d="M 0 0 L 14 0 L 14 3.5 L 9 3.5 L 9 16 L 5.5 16 L 5.5 3.5 L 0 3.5 Z" fill="#FFFFFF" />
+        <!-- M -->
+        <path d="M 16 0 L 20 0 L 23.5 10 L 27 0 L 31 0 L 31 16 L 27.5 16 L 27.5 4.5 L 24.5 13.5 L 22.5 13.5 L 19.5 4.5 L 19.5 16 L 16 16 Z" fill="#FFFFFF" />
+      </g>
+
+      <!-- Subtitle "S T U D I O" Widely Spaced Underneath -->
+      <g transform="translate(4, 155)">
+        <!-- S -->
+        <path d="M 12 0 C 22 0, 28 5, 28 13 C 28 23, 17 25, 12 28 C 7 31, 6 34, 6 37 C 6 44, 12 49, 20 49 C 26 49, 30 46, 32 43 L 37 48 C 33 54, 27 58, 20 58 C 8 58, 0 50, 0 38 C 0 27, 9 24, 16 21 C 21 18, 21 16, 21 13 C 21 7, 16 5, 11 5 C 7 5, 3 8, 1 12 L -4 8 C -2 2, 4 0, 12 0 Z" fill="#FFFFFF" transform="scale(0.52)" />
+
+        <!-- T -->
+        <path d="M 0 0 L 38 0 L 38 7 L 22 7 L 22 58 L 16 58 L 16 7 L 0 7 Z" fill="#FFFFFF" transform="translate(136, 0) scale(0.52)" />
+
+        <!-- U -->
+        <path d="M 0 0 L 6.5 0 L 6.5 38 C 6.5 47, 13 53, 21 53 C 29 53, 35 47, 35 38 L 35 0 L 41.5 0 L 41.5 38 C 41.5 52, 32 59, 21 59 C 10 59, 0 52, 0 38 Z" fill="#FFFFFF" transform="translate(268, 0) scale(0.52)" />
+
+        <!-- D -->
+        <path d="M 0 0 L 22 0 C 35 0, 43 12, 43 29 C 43 46, 35 58, 22 58 L 0 58 Z M 6.5 6.5 L 6.5 51.5 L 21 51.5 C 30 51.5, 36 42, 36 29 C 36 16, 30 6.5, 21 6.5 Z" fill="#FFFFFF" transform="translate(402, 0) scale(0.52)" />
+
+        <!-- I -->
+        <path d="M 0 0 L 6.5 0 L 6.5 58 L 0 58 Z" fill="#FFFFFF" transform="translate(542, 0) scale(0.52)" />
+
+        <!-- O -->
+        <path d="M 23 0 C 37 0, 46 12, 46 29 C 46 46, 37 58, 23 58 C 9 58, 0 46, 0 29 C 0 12, 9 0, 23 0 Z M 23 6.5 C 13 6.5, 6.5 16.5, 6.5 29 C 6.5 41.5, 13 51.5, 23 51.5 C 33 51.5, 39.5 41.5, 39.5 29 C 39.5 16.5, 33 6.5, 23 6.5 Z" fill="#FFFFFF" transform="translate(658, 0) scale(0.52)" />
+      </g>
+    </g>
+  </g>
+</svg>

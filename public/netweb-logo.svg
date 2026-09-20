@@ -1,0 +1,26 @@
+<svg width="480" height="140" viewBox="0 0 480 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="480" height="140" fill="#080A08"/>
+
+  <!-- NETWEB Isometric Hexagonal N Icon -->
+  <g transform="translate(20, 0)">
+    <!-- White Isometric Ribbon Body -->
+    <path d="M20 48.5L52 30V76.5L34 87V57L20 65V48.5Z" fill="#FFFFFF"/>
+    <path d="M34 57L52 46.5V94L34 104V87L34 57Z" fill="#FFFFFF"/>
+    <path d="M52 46.5L88 67.5V86L52 94V46.5Z" fill="#FFFFFF"/>
+    <path d="M70 77.5L88 88V110L52 131V112L70 101V77.5Z" fill="#FFFFFF"/>
+    <path d="M88 88L106 77.5V99.5L88 110V88Z" fill="#FFFFFF"/>
+    <path d="M52 112L70 101L88 110L70 120.5L52 112Z" fill="#FFFFFF"/>
+
+    <!-- Neon Lime Accent Lozenge -->
+    <path d="M93 30.5L111 20C113 18.8 115.5 19.5 116.5 21.5L120.5 29.5C121.5 31.5 120.8 34 118.8 35.2L101 45.8C99 47 96.5 46.3 95.5 44.3L91.5 36.3C90.5 34.3 91.2 31.7 93 30.5Z" fill="#A3FF12"/>
+    <path d="M95.5 44.3L101 45.8L118.8 35.2L116 34L99 43L95.5 44.3Z" fill="#8CE800" opacity="0.85"/>
+  </g>
+
+  <!-- Wordmark NETWEB -->
+  <text x="175" y="76" fill="#FFFFFF" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="52" letter-spacing="-0.02em">NETWEB</text>
+  <text x="412" y="52" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="16" opacity="0.75">TM</text>
+
+  <!-- Wordmark STUDIO with Wide Tracking -->
+  <text x="177" y="106" fill="#FFFFFF" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif" font-weight="600" font-size="21" letter-spacing="0.48em">STUDIO</text>
+</svg>
