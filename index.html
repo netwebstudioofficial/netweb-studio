@@ -178,7 +178,10 @@
   >
     <div id="root"></div>
 
-    <!-- Netlify Form Detection for React / Vite SPA -->
+    <!-- ========================================= -->
+    <!-- Netlify Contact Form Detection            -->
+    <!-- ========================================= -->
+
     <form
       name="netweb-contact"
       data-netlify="true"
@@ -186,6 +189,7 @@
       hidden
     >
       <input type="hidden" name="form-name" value="netweb-contact" />
+
       <input type="text" name="bot-field" />
 
       <input type="text" name="name" />
@@ -195,6 +199,30 @@
       <input type="text" name="service" />
       <input type="text" name="budget" />
       <textarea name="message"></textarea>
+    </form>
+
+    <!-- ========================================= -->
+    <!-- Netlify Free Audit Form Detection         -->
+    <!-- ========================================= -->
+
+    <form
+      name="netweb-free-audit"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="netweb-free-audit" />
+
+      <input type="text" name="bot-field" />
+
+      <input type="text" name="businessName" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="websiteUrl" />
+      <input type="text" name="instagramUrl" />
+      <input type="text" name="businessType" />
+      <input type="text" name="mainGoal" />
     </form>
 
     <script type="module" src="/src/main.tsx"></script>
