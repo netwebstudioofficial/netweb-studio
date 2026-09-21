@@ -53,10 +53,11 @@ export const ProcessPage: React.FC = () => {
             <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col">
               <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
                 <img
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop"
+                  src="/assets/process/process-performance.webp"
                   alt="Sub-1s Load Budget Performance"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
                 <div className="absolute top-2.5 right-2.5">
@@ -82,10 +83,11 @@ export const ProcessPage: React.FC = () => {
             <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col">
               <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
                 <img
-                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop"
+                  src="/assets/process/process-handover.webp"
                   alt="Clean Codebase Handover"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
                 <div className="absolute top-2.5 right-2.5">
@@ -111,10 +113,11 @@ export const ProcessPage: React.FC = () => {
             <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col">
               <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
                 <img
-                  src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=600&auto=format&fit=crop"
+                  src="/assets/process/process-fidelity.webp"
                   alt="Pixel-perfect Design Fidelity"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
                 <div className="absolute top-2.5 right-2.5">
@@ -140,10 +143,11 @@ export const ProcessPage: React.FC = () => {
             <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col">
               <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
                 <img
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop"
+                  src="/assets/process/process-seo.webp"
                   alt="SEO & Analytics Foundation"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
                 <div className="absolute top-2.5 right-2.5">

@@ -77,7 +77,7 @@ export const servicesData: ServiceItem[] = [
     deliverables: ["Custom UI/UX Prototypes", "Responsive Frontend Architecture", "SEO-Structured Semantic Markup", "Ultra-Fast Page Load Under 1.2s", "Content Management Ready"],
     techStack: ["React", "Vite", "Tailwind CSS", "Motion"],
     icon: "Layout",
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop"
+    image: "/assets/services/web-development.webp"
   },
   {
     id: "ecommerce",
@@ -88,7 +88,7 @@ export const servicesData: ServiceItem[] = [
     deliverables: ["Frictionless Mobile Checkout", "High-Converting Catalog Architecture", "Payment Gateway Integration", "Inventory & Order Management", "Abandoned Cart Recovery Setup"],
     techStack: ["Shopify / Custom Headless", "Stripe / Razorpay", "Tailwind CSS"],
     icon: "ShoppingBag",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
+    image: "/assets/services/ecommerce.webp"
   },
   {
     id: "web-applications",
@@ -99,7 +99,7 @@ export const servicesData: ServiceItem[] = [
     deliverables: ["Role-Based Access Control", "Interactive Dashboards & Analytics", "Real-Time State Synchronization", "RESTful / GraphQL APIs", "Scalable Database Design"],
     techStack: ["React", "Node.js", "Express", "PostgreSQL / MongoDB"],
     icon: "Layers",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"
+    image: "/assets/services/web-applications.webp"
   },
   {
     id: "ui-ux-design",
@@ -110,7 +110,7 @@ export const servicesData: ServiceItem[] = [
     deliverables: ["Interactive Figma Design Systems", "User Journey Flow Maps", "Micro-Interaction Blueprints", "High-Fidelity Wireframes", "Design-to-Code Handoff"],
     techStack: ["Figma", "Design Systems", "Motion Spec", "WCAG AA"],
     icon: "Palette",
-    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1000&auto=format&fit=crop"
+    image: "/assets/services/ui-ux.webp"
   },
   {
     id: "website-redesign",
@@ -121,7 +121,7 @@ export const servicesData: ServiceItem[] = [
     deliverables: ["Pre-Launch UX & Speed Audit", "301 Redirect Architecture & SEO Preservation", "Complete Brand Visual Modernization", "Core Web Vitals Remediation"],
     techStack: ["Lighthouse", "React", "Semantic HTML", "Schema.org"],
     icon: "RefreshCw",
-    image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1000&auto=format&fit=crop"
+    image: "/assets/services/website-redesign.webp"
   },
   {
     id: "maintenance-support",
@@ -132,7 +132,7 @@ export const servicesData: ServiceItem[] = [
     deliverables: ["Monthly Security & Patch Audits", "Uptime & Performance Monitoring", "Priority Feature Iterations", "Automated Backup Protocols", "Direct Engineering Channel"],
     techStack: ["Cloudflare", "CI/CD Pipelines", "Git", "GitHub"],
     icon: "ShieldCheck",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop"
+    image: "/assets/services/support-maintenance.webp"
   },
   {
     id: "ai-automation",
@@ -143,7 +143,7 @@ export const servicesData: ServiceItem[] = [
     deliverables: ["Autonomous Multi-Step Workflows", "CRM & Lead Auto-Enrichment", "Custom LLM API Pipelines", "Document & Invoice Auto-Parsing", "Webhook & Database Integration", "Error Fallback & Human Escalation"],
     techStack: ["OpenAI / Gemini APIs", "Python", "Node.js", "LangChain", "Webhooks"],
     icon: "Cpu",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1000&auto=format&fit=crop"
+    image: "/assets/services/ai-workflows.webp"
   },
   {
     id: "ai-chatbots",
@@ -154,7 +154,7 @@ export const servicesData: ServiceItem[] = [
     deliverables: ["Custom Knowledge-Base RAG Training", "Direct Telegram / Live AI Concierge", "Interactive Web & Mobile Chatbot", "Calendar & Booking Sync", "Sentiment Analysis & Smart Handoff", "Analytics & Interaction Transcripts"],
     techStack: ["Gemini / Claude / GPT-4", "Vector Databases (Pinecone)", "Telegram Bot API", "React WebSocket"],
     icon: "Bot",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1000&auto=format&fit=crop"
+    image: "/assets/services/chatbots.webp"
   },
   {
     id: "digital-growth",
@@ -165,7 +165,7 @@ export const servicesData: ServiceItem[] = [
     deliverables: ["Technical & Semantic SEO Architecture", "Conversion Rate Optimization (CRO)", "Core Web Vitals Speed Tuning", "Search Console & Analytics Funnels", "A/B Testing & User Journey Refinement"],
     techStack: ["Technical SEO", "CRO", "Analytics", "Core Web Vitals"],
     icon: "TrendingUp",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
+    image: "/assets/services/digital-growth.webp"
   }
 ];
 
@@ -182,7 +182,7 @@ export const businessSolutionsData: BusinessSolution[] = [
       { label: "Direct Bookings", value: "3.4x" },
       { label: "Load Time", value: "< 0.8s" }
     ],
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop"
+    image: "/assets/solutions/solution-restaurant.webp"
   },
   {
     id: "hotel",
@@ -196,7 +196,7 @@ export const businessSolutionsData: BusinessSolution[] = [
       { label: "Session Duration", value: "4m 12s" },
       { label: "Guest Inquiries", value: "2.8x" }
     ],
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop"
+    image: "/assets/solutions/solution-hotel.webp"
   },
   {
     id: "salon",
@@ -210,7 +210,7 @@ export const businessSolutionsData: BusinessSolution[] = [
       { label: "No-Show Rate", value: "-65%" },
       { label: "Mobile Engagement", value: "91%" }
     ],
-    image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop"
+    image: "/assets/solutions/solution-salon.webp"
   },
   {
     id: "gym",
@@ -224,7 +224,7 @@ export const businessSolutionsData: BusinessSolution[] = [
       { label: "Lead Capture Rate", value: "14.2%" },
       { label: "Class RSVPs", value: "3.1x" }
     ],
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop"
+    image: "/assets/solutions/solution-gym.webp"
   },
   {
     id: "healthcare",
@@ -238,7 +238,7 @@ export const businessSolutionsData: BusinessSolution[] = [
       { label: "Mobile Accessibility", value: "100%" },
       { label: "Wait Time Saved", value: "45%" }
     ],
-    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1200&auto=format&fit=crop"
+    image: "/assets/solutions/solution-healthcare.webp"
   },
   {
     id: "real-estate",
@@ -252,7 +252,7 @@ export const businessSolutionsData: BusinessSolution[] = [
       { label: "Avg View Time", value: "5m 30s" },
       { label: "Viewing Requests", value: "3.7x" }
     ],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+    image: "/assets/solutions/solution-real-estate.webp"
   },
   {
     id: "education",
@@ -266,7 +266,7 @@ export const businessSolutionsData: BusinessSolution[] = [
       { label: "Info Pack Downloads", value: "4.5x" },
       { label: "Parent Engagement", value: "88%" }
     ],
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop"
+    image: "/assets/solutions/solution-education.webp"
   },
   {
     id: "startup",
@@ -280,7 +280,7 @@ export const businessSolutionsData: BusinessSolution[] = [
       { label: "Investor Inquiries", value: "18+" },
       { label: "Bounce Rate", value: "< 24%" }
     ],
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop"
+    image: "/assets/solutions/solution-startup.webp"
   }
 ];
 
@@ -295,7 +295,7 @@ export const selectedWorkData: ProjectItem[] = [
     longDesc: "LUMENOR is an architectural sanctuary in visual web design. Created for ultra-prime property developers, the experience highlights expansive estates through clean structural grids, subtle parallax transitions, and an exclusive private viewing concierge flow.",
     clientType: "Ultra-Prime Property Developer",
     techTags: ["React", "Tailwind CSS", "Motion", "Vite"],
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/projects/lumenor.webp",
     featured: true,
     metrics: [
       { label: "Direct Inquiries", value: "+84%" },
@@ -315,7 +315,7 @@ export const selectedWorkData: ProjectItem[] = [
     longDesc: "Designed for a heritage European bistro and specialty roastery. Visitors can explore seasonal breakfast and dinner menus, filter by dietary requirements, and initiate instant table reservations.",
     clientType: "Hospitality & Specialty Coffee",
     techTags: ["React", "Tailwind CSS", "Motion"],
-    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/projects/bella-cafe.webp",
     metrics: [
       { label: "Direct Bookings", value: "3.2x" },
       { label: "Mobile Share", value: "88%" }
@@ -333,7 +333,7 @@ export const selectedWorkData: ProjectItem[] = [
     longDesc: "Aurelia needed a website that mirrored the serene, minimalist luxury of their physical flagship salon. Featuring smooth category transitions, stylist lookbooks, and synchronized appointment booking.",
     clientType: "Luxury Personal Care & Spa",
     techTags: ["React", "Motion", "Tailwind CSS", "Cal.com Sync"],
-    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/projects/aurelia.webp",
     metrics: [
       { label: "No-Show Reduction", value: "68%" },
       { label: "Online Bookings", value: "76%" }
@@ -351,7 +351,7 @@ export const selectedWorkData: ProjectItem[] = [
     longDesc: "Engineered to capture active urban professionals. High-contrast typography, interactive daily class schedules, and seamless one-click pass registration that increased trial-to-member conversion.",
     clientType: "Athletic Club & Performance Gym",
     techTags: ["React", "Tailwind CSS", "Vite", "Motion"],
-    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/projects/fitcore.webp",
     metrics: [
       { label: "Trial Signups", value: "+92%" },
       { label: "Mobile Bounce Rate", value: "18%" }
@@ -369,7 +369,7 @@ export const selectedWorkData: ProjectItem[] = [
     longDesc: "Built with clinical precision, WCAG AA contrast compliance, and reassuring clarity. Allows patients to easily locate specialist doctors, verify insurance networks, and request telehealth or clinic visits.",
     clientType: "Multi-Specialty Medical Group",
     techTags: ["React", "Tailwind CSS", "Accessible Forms", "Schema.org"],
-    image: "https://images.unsplash.com/photo-1504813184591-01572f98c85f?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/projects/medicare-plus.webp",
     metrics: [
       { label: "Patient Inquiries", value: "2.5x" },
       { label: "Lighthouse Score", value: "98/100" }
@@ -387,7 +387,7 @@ export const selectedWorkData: ProjectItem[] = [
     longDesc: "A digital experience celebrating experiential travel. Guests can review curated villa amenities, local chef dining menus, and initiate reservation inquiries with dedicated villa concierges.",
     clientType: "Private Hospitality Collection",
     techTags: ["React", "Tailwind CSS", "Motion", "Vite"],
-    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/projects/stayvista.webp",
     metrics: [
       { label: "Direct Bookings", value: "+52%" },
       { label: "Average Stay", value: "3.8 nights" }
@@ -405,7 +405,7 @@ export const selectedWorkData: ProjectItem[] = [
     longDesc: "Designed for a forward-thinking international preparatory academy. Features structured curriculum breakdowns, faculty spotlights, admission timelines, and downloadable course prospectuses.",
     clientType: "Global Educational Institution",
     techTags: ["React", "Tailwind CSS", "Motion", "Vite"],
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/projects/brightpath.webp",
     metrics: [
       { label: "Prospectus Downloads", value: "4.1x" },
       { label: "Admission Queries", value: "+46%" }
@@ -423,7 +423,7 @@ export const selectedWorkData: ProjectItem[] = [
     longDesc: "A minimalist, hyper-optimized digital commerce experience engineered for a sustainable lifestyle brand. Instantaneous search, dynamic swatch selections, and zero layout shift during checkout transitions.",
     clientType: "DTC Lifestyle Brand",
     techTags: ["React", "Tailwind CSS", "Motion", "Stripe Ready"],
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/projects/nexcart.webp",
     metrics: [
       { label: "Conversion Rate", value: "4.2%" },
       { label: "Cart Abandonment", value: "-35%" }
@@ -441,7 +441,7 @@ export const selectedWorkData: ProjectItem[] = [
     longDesc: "Engineered for an enterprise cloud infrastructure venture. Features interactive architectural visualizers, real-time benchmark telemetry, streamlined developer sandbox requests, and a secure enterprise contact pipeline.",
     clientType: "Enterprise Cloud Venture",
     techTags: ["React", "Tailwind CSS", "Motion"],
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+    image: "/assets/projects/novatech.webp",
     metrics: [
       { label: "Enterprise Inquiries", value: "3.2x" },
       { label: "Documentation Dwell", value: "6m 15s" }

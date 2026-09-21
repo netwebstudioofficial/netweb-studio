@@ -63,10 +63,11 @@ export const PricingPage: React.FC = () => {
                 {/* Visual Deliverable Image Header */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
                   <img
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500&auto=format&fit=crop"
+                    src="/assets/pricing/pricing-starter.webp"
                     alt="Starter Tier Deliverables"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
                     loading="lazy"
+                    referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
                   <div className="absolute top-3 left-3">
@@ -127,10 +128,11 @@ export const PricingPage: React.FC = () => {
                 {/* Visual Deliverable Image Header */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
                   <img
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500&auto=format&fit=crop"
+                    src="/assets/pricing/pricing-business.webp"
                     alt="Business Tier Deliverables"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
                     loading="lazy"
+                    referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#141814] via-transparent to-transparent pointer-events-none" />
                   <div className="absolute top-3 left-3">
@@ -189,10 +191,11 @@ export const PricingPage: React.FC = () => {
                 {/* Visual Deliverable Image Header */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
                   <img
-                    src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=500&auto=format&fit=crop"
+                    src="/assets/pricing/pricing-enterprise.webp"
                     alt="Premium Studio Deliverables"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
                     loading="lazy"
+                    referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
                   <div className="absolute top-3 left-3">

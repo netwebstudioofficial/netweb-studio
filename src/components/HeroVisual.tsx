@@ -51,10 +51,11 @@ export const HeroVisual: React.FC = () => {
         {/* Browser Viewport */}
         <div className="relative aspect-[16/10] overflow-hidden group">
           <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
-            alt="NETWEB STUDIO Luxury Property Showcase"
+            src="/assets/hero-main-desktop.webp"
+            alt="NETWEB STUDIO Luxury Architectural Showcase"
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-90"
             loading="eager"
+            referrerPolicy="no-referrer"
           />
 
           {/* Vignette & Contrast Overlay */}
@@ -111,9 +112,11 @@ export const HeroVisual: React.FC = () => {
 
         <div className="rounded-xl overflow-hidden aspect-[9/16] relative">
           <img
-            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop"
+            src="/assets/hero-mobile-preview.webp"
             alt="Mobile Ergonomic Preview"
             className="w-full h-full object-cover"
+            loading="lazy"
+            referrerPolicy="no-referrer"
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40" />

@@ -224,10 +224,11 @@ export const HomePage: React.FC = () => {
             {/* Visual Card 1: Design System & Wireframing */}
             <RevealChild className="group relative rounded-xl overflow-hidden bg-[#121612] border border-white/[0.08] aspect-[16/10] flex flex-col justify-end p-5">
               <img
-                src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop"
+                src="/assets/craft-design-system.webp"
                 alt="Bespoke Design Architecture"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.7] group-hover:brightness-90"
                 loading="lazy"
+                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#080A08] via-[#080A08]/40 to-transparent" />
               <div className="relative z-10">
@@ -242,10 +243,11 @@ export const HomePage: React.FC = () => {
             {/* Visual Card 2: Cross-Platform Responsive Engineering */}
             <RevealChild className="group relative rounded-xl overflow-hidden bg-[#121612] border border-white/[0.08] aspect-[16/10] flex flex-col justify-end p-5">
               <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+                src="/assets/craft-responsive.webp"
                 alt="Responsive Engineering Across Screens"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.7] group-hover:brightness-90"
                 loading="lazy"
+                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#080A08] via-[#080A08]/40 to-transparent" />
               <div className="relative z-10">
@@ -260,10 +262,11 @@ export const HomePage: React.FC = () => {
             {/* Visual Card 3: High-Performance Engine */}
             <RevealChild className="group relative rounded-xl overflow-hidden bg-[#121612] border border-white/[0.08] aspect-[16/10] flex flex-col justify-end p-5">
               <img
-                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop"
+                src="/assets/craft-performance.webp"
                 alt="Sub-second Production Code"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.7] group-hover:brightness-90"
                 loading="lazy"
+                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#080A08] via-[#080A08]/40 to-transparent" />
               <div className="relative z-10">
