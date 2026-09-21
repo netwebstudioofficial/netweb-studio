@@ -3,6 +3,7 @@ import { AuditForm } from "../components/AuditForm";
 import { SectionTitle } from "../components/SectionTitle";
 import { Activity, Smartphone, Search, Target, Zap, ShieldCheck } from "lucide-react";
 import { RevealOnScroll, RevealGroup, RevealChild } from "../components/RevealOnScroll";
+import { MobileCardSlider } from "../components/MobileCardSlider";
 
 export const AuditPage: React.FC = () => {
   return (
@@ -46,46 +47,59 @@ export const AuditPage: React.FC = () => {
             />
           </RevealOnScroll>
 
-          <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <RevealChild className="p-6 rounded-xl bg-[#101310] border border-white/[0.08]">
-              <div className="w-10 h-10 rounded-lg bg-[#141814] border border-[#A3FF12]/30 flex items-center justify-center text-[#A3FF12] mb-4">
-                <Activity className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Core Web Vitals</h3>
-              <p className="text-xs text-[#A7ADA5] leading-relaxed">
-                Largest Contentful Paint, Cumulative Layout Shift, and Interaction to Next Paint evaluated directly against Google's search ranking thresholds.
-              </p>
-            </RevealChild>
+          <RevealGroup>
+            <MobileCardSlider
+              desktopGridClassName="md:grid-cols-2 lg:grid-cols-4 gap-6"
+              swipeHintLabel="Swipe criteria"
+            >
+              <RevealChild className="p-6 rounded-xl bg-[#101310] border border-white/[0.08] h-full flex flex-col justify-between">
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-[#141814] border border-[#A3FF12]/30 flex items-center justify-center text-[#A3FF12] mb-4">
+                    <Activity className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">Core Web Vitals</h3>
+                  <p className="text-xs text-[#A7ADA5] leading-relaxed">
+                    Largest Contentful Paint, Cumulative Layout Shift, and Interaction to Next Paint evaluated directly against Google's search ranking thresholds.
+                  </p>
+                </div>
+              </RevealChild>
 
-            <RevealChild className="p-6 rounded-xl bg-[#101310] border border-white/[0.08]">
-              <div className="w-10 h-10 rounded-lg bg-[#141814] border border-[#A3FF12]/30 flex items-center justify-center text-[#A3FF12] mb-4">
-                <Smartphone className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Mobile Ergonomics</h3>
-              <p className="text-xs text-[#A7ADA5] leading-relaxed">
-                Testing across real viewport widths (320px to 428px) for thumb-zone accessibility, tap target dimensions, and fluid font readability.
-              </p>
-            </RevealChild>
+              <RevealChild className="p-6 rounded-xl bg-[#101310] border border-white/[0.08] h-full flex flex-col justify-between">
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-[#141814] border border-[#A3FF12]/30 flex items-center justify-center text-[#A3FF12] mb-4">
+                    <Smartphone className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">Mobile Ergonomics</h3>
+                  <p className="text-xs text-[#A7ADA5] leading-relaxed">
+                    Testing across real viewport widths (320px to 428px) for thumb-zone accessibility, tap target dimensions, and fluid font readability.
+                  </p>
+                </div>
+              </RevealChild>
 
-            <RevealChild className="p-6 rounded-xl bg-[#101310] border border-white/[0.08]">
-              <div className="w-10 h-10 rounded-lg bg-[#141814] border border-[#A3FF12]/30 flex items-center justify-center text-[#A3FF12] mb-4">
-                <Search className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Technical SEO</h3>
-              <p className="text-xs text-[#A7ADA5] leading-relaxed">
-                Evaluating schema markup, canonical tags, heading structure, alt tags, OpenGraph previews, and Google Search Console indexability.
-              </p>
-            </RevealChild>
+              <RevealChild className="p-6 rounded-xl bg-[#101310] border border-white/[0.08] h-full flex flex-col justify-between">
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-[#141814] border border-[#A3FF12]/30 flex items-center justify-center text-[#A3FF12] mb-4">
+                    <Search className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">Technical SEO</h3>
+                  <p className="text-xs text-[#A7ADA5] leading-relaxed">
+                    Evaluating schema markup, canonical tags, heading structure, alt tags, OpenGraph previews, and Google Search Console indexability.
+                  </p>
+                </div>
+              </RevealChild>
 
-            <RevealChild className="p-6 rounded-xl bg-[#101310] border border-white/[0.08]">
-              <div className="w-10 h-10 rounded-lg bg-[#141814] border border-[#A3FF12]/30 flex items-center justify-center text-[#A3FF12] mb-4">
-                <Target className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Conversion Funnel</h3>
-              <p className="text-xs text-[#A7ADA5] leading-relaxed">
-                Identifying where high-intent visitors hesitate, form abandonment triggers, and missing direct engagement pathways like Telegram.
-              </p>
-            </RevealChild>
+              <RevealChild className="p-6 rounded-xl bg-[#101310] border border-white/[0.08] h-full flex flex-col justify-between">
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-[#141814] border border-[#A3FF12]/30 flex items-center justify-center text-[#A3FF12] mb-4">
+                    <Target className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">Conversion Funnel</h3>
+                  <p className="text-xs text-[#A7ADA5] leading-relaxed">
+                    Identifying where high-intent visitors hesitate, form abandonment triggers, and missing direct engagement pathways like Telegram.
+                  </p>
+                </div>
+              </RevealChild>
+            </MobileCardSlider>
           </RevealGroup>
         </div>
       </section>

@@ -12,6 +12,7 @@ import { BeforeAfterSlider } from "../components/BeforeAfterSlider";
 import { AuditForm } from "../components/AuditForm";
 import { TestimonialCard } from "../components/TestimonialCard";
 import { FAQAccordion } from "../components/FAQAccordion";
+import { MobileCardSlider } from "../components/MobileCardSlider";
 import {
   servicesData,
   selectedWorkData,
@@ -220,63 +221,68 @@ export const HomePage: React.FC = () => {
           </RevealOnScroll>
 
           {/* Visual Digital Craftsmanship Showcase Gallery */}
-          <RevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
-            {/* Visual Card 1: Design System & Wireframing */}
-            <RevealChild className="group relative rounded-xl overflow-hidden bg-[#121612] border border-white/[0.08] aspect-[16/10] flex flex-col justify-end p-5">
-              <img
-                src="/assets/craft-design-system.webp"
-                alt="Bespoke Design Architecture"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.7] group-hover:brightness-90"
-                loading="lazy"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080A08] via-[#080A08]/40 to-transparent" />
-              <div className="relative z-10">
-                <span className="font-mono text-[10px] text-[#A3FF12] uppercase tracking-wider px-2 py-0.5 rounded bg-[#080A08]/80 border border-[#A3FF12]/30 mb-2 inline-block">
-                  AESTHETIC DISCIPLINE
-                </span>
-                <h3 className="text-base font-bold text-white">Bespoke Design Systems</h3>
-                <p className="text-xs text-[#A7ADA5] mt-1">Zero stock templates. Mathematically tuned scales.</p>
-              </div>
-            </RevealChild>
+          <RevealGroup>
+            <MobileCardSlider
+              desktopGridClassName="md:grid-cols-3 gap-6 pt-6"
+              swipeHintLabel="Swipe pillars"
+            >
+              {/* Visual Card 1: Design System & Wireframing */}
+              <RevealChild className="group relative rounded-xl overflow-hidden bg-[#121612] border border-white/[0.08] aspect-[16/10] flex flex-col justify-end p-5 h-full">
+                <img
+                  src="/assets/craft-design-system.webp"
+                  alt="Bespoke Design Architecture"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.7] group-hover:brightness-90"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080A08] via-[#080A08]/40 to-transparent" />
+                <div className="relative z-10">
+                  <span className="font-mono text-[10px] text-[#A3FF12] uppercase tracking-wider px-2 py-0.5 rounded bg-[#080A08]/80 border border-[#A3FF12]/30 mb-2 inline-block">
+                    AESTHETIC DISCIPLINE
+                  </span>
+                  <h3 className="text-base font-bold text-white">Bespoke Design Systems</h3>
+                  <p className="text-xs text-[#A7ADA5] mt-1">Zero stock templates. Mathematically tuned scales.</p>
+                </div>
+              </RevealChild>
 
-            {/* Visual Card 2: Cross-Platform Responsive Engineering */}
-            <RevealChild className="group relative rounded-xl overflow-hidden bg-[#121612] border border-white/[0.08] aspect-[16/10] flex flex-col justify-end p-5">
-              <img
-                src="/assets/craft-responsive.webp"
-                alt="Responsive Engineering Across Screens"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.7] group-hover:brightness-90"
-                loading="lazy"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080A08] via-[#080A08]/40 to-transparent" />
-              <div className="relative z-10">
-                <span className="font-mono text-[10px] text-[#A3FF12] uppercase tracking-wider px-2 py-0.5 rounded bg-[#080A08]/80 border border-[#A3FF12]/30 mb-2 inline-block">
-                  RESPONSIVE ERGONOMICS
-                </span>
-                <h3 className="text-base font-bold text-white">Mobile-First Touch Precision</h3>
-                <p className="text-xs text-[#A7ADA5] mt-1">44px+ minimum tap targets, fluid typographic scaling.</p>
-              </div>
-            </RevealChild>
+              {/* Visual Card 2: Cross-Platform Responsive Engineering */}
+              <RevealChild className="group relative rounded-xl overflow-hidden bg-[#121612] border border-white/[0.08] aspect-[16/10] flex flex-col justify-end p-5 h-full">
+                <img
+                  src="/assets/craft-responsive.webp"
+                  alt="Responsive Engineering Across Screens"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.7] group-hover:brightness-90"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080A08] via-[#080A08]/40 to-transparent" />
+                <div className="relative z-10">
+                  <span className="font-mono text-[10px] text-[#A3FF12] uppercase tracking-wider px-2 py-0.5 rounded bg-[#080A08]/80 border border-[#A3FF12]/30 mb-2 inline-block">
+                    RESPONSIVE ERGONOMICS
+                  </span>
+                  <h3 className="text-base font-bold text-white">Mobile-First Touch Precision</h3>
+                  <p className="text-xs text-[#A7ADA5] mt-1">44px+ minimum tap targets, fluid typographic scaling.</p>
+                </div>
+              </RevealChild>
 
-            {/* Visual Card 3: High-Performance Engine */}
-            <RevealChild className="group relative rounded-xl overflow-hidden bg-[#121612] border border-white/[0.08] aspect-[16/10] flex flex-col justify-end p-5">
-              <img
-                src="/assets/craft-performance.webp"
-                alt="Sub-second Production Code"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.7] group-hover:brightness-90"
-                loading="lazy"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080A08] via-[#080A08]/40 to-transparent" />
-              <div className="relative z-10">
-                <span className="font-mono text-[10px] text-[#A3FF12] uppercase tracking-wider px-2 py-0.5 rounded bg-[#080A08]/80 border border-[#A3FF12]/30 mb-2 inline-block">
-                  PERFORMANCE BENCHMARK
-                </span>
-                <h3 className="text-base font-bold text-white">Sub-1.0s Speed Budgets</h3>
-                <p className="text-xs text-[#A7ADA5] mt-1">Passing all Google Core Web Vitals on first load.</p>
-              </div>
-            </RevealChild>
+              {/* Visual Card 3: High-Performance Engine */}
+              <RevealChild className="group relative rounded-xl overflow-hidden bg-[#121612] border border-white/[0.08] aspect-[16/10] flex flex-col justify-end p-5 h-full">
+                <img
+                  src="/assets/craft-performance.webp"
+                  alt="Sub-second Production Code"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.7] group-hover:brightness-90"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080A08] via-[#080A08]/40 to-transparent" />
+                <div className="relative z-10">
+                  <span className="font-mono text-[10px] text-[#A3FF12] uppercase tracking-wider px-2 py-0.5 rounded bg-[#080A08]/80 border border-[#A3FF12]/30 mb-2 inline-block">
+                    PERFORMANCE BENCHMARK
+                  </span>
+                  <h3 className="text-base font-bold text-white">Sub-1.0s Speed Budgets</h3>
+                  <p className="text-xs text-[#A7ADA5] mt-1">Passing all Google Core Web Vitals on first load.</p>
+                </div>
+              </RevealChild>
+            </MobileCardSlider>
           </RevealGroup>
         </div>
       </section>
@@ -298,12 +304,17 @@ export const HomePage: React.FC = () => {
             />
           </RevealOnScroll>
 
-          <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {servicesData.map((service) => (
-              <RevealChild key={service.id}>
-                <ServiceCard service={service} />
-              </RevealChild>
-            ))}
+          <RevealGroup>
+            <MobileCardSlider
+              desktopGridClassName="md:grid-cols-2 lg:grid-cols-3 gap-6"
+              swipeHintLabel="Swipe services"
+            >
+              {servicesData.map((service) => (
+                <RevealChild key={service.id} className="h-full">
+                  <ServiceCard service={service} />
+                </RevealChild>
+              ))}
+            </MobileCardSlider>
           </RevealGroup>
 
           <RevealOnScroll delay={0.15} className="mt-12 text-center">
@@ -471,15 +482,20 @@ export const HomePage: React.FC = () => {
           </RevealOnScroll>
 
           {/* Portfolio Grid */}
-          <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project) => (
-              <RevealChild key={project.id}>
-                <PortfolioCard
-                  project={project}
-                  onSelect={(p) => setActiveModalProject(p)}
-                />
-              </RevealChild>
-            ))}
+          <RevealGroup>
+            <MobileCardSlider
+              desktopGridClassName="md:grid-cols-2 lg:grid-cols-3 gap-6"
+              swipeHintLabel="Swipe projects"
+            >
+              {filteredProjects.map((project) => (
+                <RevealChild key={project.id} className="h-full">
+                  <PortfolioCard
+                    project={project}
+                    onSelect={(p) => setActiveModalProject(p)}
+                  />
+                </RevealChild>
+              ))}
+            </MobileCardSlider>
           </RevealGroup>
 
           <RevealOnScroll delay={0.2} className="mt-12 text-center">
@@ -527,32 +543,38 @@ export const HomePage: React.FC = () => {
             </p>
           </RevealOnScroll>
 
-          <RevealGroup className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {[
-              { step: "01", text: "YOU HAVE AN IDEA" },
-              { step: "02", text: "WE UNDERSTAND IT" },
-              { step: "03", text: "WE DESIGN IT" },
-              { step: "04", text: "WE BUILD IT" },
-              { step: "05", text: "YOU LAUNCH IT" },
-              { step: "06", text: "WE HELP YOU GROW" },
-            ].map((node, idx) => (
-              <RevealChild
-                key={idx}
-                className="p-4 rounded-lg bg-[#101310] border border-white/[0.08] text-center flex flex-col justify-between relative group hover:border-[#A3FF12]/40 transition-colors"
-              >
-                <span className="font-mono text-[11px] text-[#A3FF12] font-bold block mb-2">
-                  {node.step}
-                </span>
-                <p className="text-xs sm:text-sm font-extrabold text-white tracking-tight leading-tight">
-                  {node.text}
-                </p>
-                {idx < 5 && (
-                  <span className="hidden lg:block absolute -right-2.5 top-1/2 -translate-y-1/2 text-[#A3FF12] z-10 font-bold">
-                    →
+          <RevealGroup>
+            <MobileCardSlider
+              desktopGridClassName="grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3"
+              cardWidthClassName="w-[58vw] max-w-[220px] sm:w-[200px]"
+              swipeHintLabel="Client journey"
+            >
+              {[
+                { step: "01", text: "YOU HAVE AN IDEA" },
+                { step: "02", text: "WE UNDERSTAND IT" },
+                { step: "03", text: "WE DESIGN IT" },
+                { step: "04", text: "WE BUILD IT" },
+                { step: "05", text: "YOU LAUNCH IT" },
+                { step: "06", text: "WE HELP YOU GROW" },
+              ].map((node, idx) => (
+                <RevealChild
+                  key={idx}
+                  className="p-4 rounded-lg bg-[#101310] border border-white/[0.08] text-center flex flex-col justify-between relative group hover:border-[#A3FF12]/40 transition-colors h-full"
+                >
+                  <span className="font-mono text-[11px] text-[#A3FF12] font-bold block mb-2">
+                    {node.step}
                   </span>
-                )}
-              </RevealChild>
-            ))}
+                  <p className="text-xs sm:text-sm font-extrabold text-white tracking-tight leading-tight">
+                    {node.text}
+                  </p>
+                  {idx < 5 && (
+                    <span className="hidden lg:block absolute -right-2.5 top-1/2 -translate-y-1/2 text-[#A3FF12] z-10 font-bold">
+                      →
+                    </span>
+                  )}
+                </RevealChild>
+              ))}
+            </MobileCardSlider>
           </RevealGroup>
         </div>
       </section>
@@ -571,23 +593,30 @@ export const HomePage: React.FC = () => {
             />
           </RevealOnScroll>
 
-          <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyNetwebData.map((item) => (
-              <RevealChild
-                key={item.number}
-                className="p-7 sm:p-8 rounded-xl bg-[#141814] border border-white/[0.08] hover:border-[#A3FF12]/30 transition-all group"
-              >
-                <span className="font-mono text-xs font-bold text-[#A3FF12] px-2.5 py-1 rounded bg-[#080A08] border border-[#A3FF12]/20 mb-4 inline-block">
-                  {item.number}
-                </span>
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#A3FF12] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-[#A7ADA5] leading-relaxed">
-                  {item.description}
-                </p>
-              </RevealChild>
-            ))}
+          <RevealGroup>
+            <MobileCardSlider
+              desktopGridClassName="md:grid-cols-2 lg:grid-cols-3 gap-6"
+              swipeHintLabel="Swipe principles"
+            >
+              {whyNetwebData.map((item) => (
+                <RevealChild
+                  key={item.number}
+                  className="p-7 sm:p-8 rounded-xl bg-[#141814] border border-white/[0.08] hover:border-[#A3FF12]/30 transition-all group h-full flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="font-mono text-xs font-bold text-[#A3FF12] px-2.5 py-1 rounded bg-[#080A08] border border-[#A3FF12]/20 mb-4 inline-block">
+                      {item.number}
+                    </span>
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#A3FF12] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-[#A7ADA5] leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </RevealChild>
+              ))}
+            </MobileCardSlider>
           </RevealGroup>
         </div>
       </section>
@@ -664,12 +693,17 @@ export const HomePage: React.FC = () => {
             </p>
           </RevealOnScroll>
 
-          <RevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonialsData.map((t, idx) => (
-              <RevealChild key={idx}>
-                <TestimonialCard testimonial={t} />
-              </RevealChild>
-            ))}
+          <RevealGroup>
+            <MobileCardSlider
+              desktopGridClassName="md:grid-cols-3 gap-6"
+              swipeHintLabel="Swipe feedback"
+            >
+              {testimonialsData.map((t, idx) => (
+                <RevealChild key={idx} className="h-full">
+                  <TestimonialCard testimonial={t} />
+                </RevealChild>
+              ))}
+            </MobileCardSlider>
           </RevealGroup>
         </div>
       </section>

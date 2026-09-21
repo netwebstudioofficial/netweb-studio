@@ -4,6 +4,7 @@ import { Button } from "../components/Button";
 import { whyNetwebData, technologiesData } from "../data/agencyData";
 import { AboutVisualEffects } from "../components/AboutVisualEffects";
 import { RevealOnScroll, RevealGroup, RevealChild } from "../components/RevealOnScroll";
+import { MobileCardSlider } from "../components/MobileCardSlider";
 import {
   Sparkles,
   Code2,
@@ -115,23 +116,30 @@ export const AboutPage: React.FC = () => {
             />
           </RevealOnScroll>
 
-          <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyNetwebData.map((item) => (
-              <RevealChild
-                key={item.number}
-                className="p-8 rounded-xl bg-[#141814] border border-white/[0.08] hover:border-[#A3FF12]/40 hover:bg-[#161c16] transition-all duration-300 group"
-              >
-                <span className="font-mono text-xs font-bold text-[#A3FF12] px-2.5 py-1 rounded bg-[#080A08] border border-[#A3FF12]/20 mb-4 inline-block group-hover:border-[#A3FF12]/50 transition-colors">
-                  {item.number}
-                </span>
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#A3FF12] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-[#A7ADA5] leading-relaxed">
-                  {item.description}
-                </p>
-              </RevealChild>
-            ))}
+          <RevealGroup>
+            <MobileCardSlider
+              desktopGridClassName="md:grid-cols-2 lg:grid-cols-3 gap-6"
+              swipeHintLabel="Swipe principles"
+            >
+              {whyNetwebData.map((item) => (
+                <RevealChild
+                  key={item.number}
+                  className="p-8 rounded-xl bg-[#141814] border border-white/[0.08] hover:border-[#A3FF12]/40 hover:bg-[#161c16] transition-all duration-300 group h-full flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="font-mono text-xs font-bold text-[#A3FF12] px-2.5 py-1 rounded bg-[#080A08] border border-[#A3FF12]/20 mb-4 inline-block group-hover:border-[#A3FF12]/50 transition-colors">
+                      {item.number}
+                    </span>
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#A3FF12] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-[#A7ADA5] leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </RevealChild>
+              ))}
+            </MobileCardSlider>
           </RevealGroup>
         </div>
       </section>

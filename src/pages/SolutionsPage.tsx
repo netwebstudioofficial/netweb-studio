@@ -5,6 +5,7 @@ import { Button } from "../components/Button";
 import { businessSolutionsData } from "../data/agencyData";
 import { Check, Sparkles, ArrowRight, ExternalLink } from "lucide-react";
 import { RevealOnScroll, RevealGroup, RevealChild } from "../components/RevealOnScroll";
+import { MobileCardSlider } from "../components/MobileCardSlider";
 
 export const SolutionsPage: React.FC = () => {
   return (
@@ -69,78 +70,83 @@ export const SolutionsPage: React.FC = () => {
             />
           </RevealOnScroll>
 
-          <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {businessSolutionsData.map((item) => (
-              <RevealChild
-                key={item.id}
-                className="rounded-xl bg-[#101310] border border-white/[0.08] hover:border-[#A3FF12]/40 transition-all flex flex-col justify-between overflow-hidden group shadow-lg"
-              >
-                <div>
-                  {/* Visual Image Header in Browser Mockup Frame */}
-                  <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
-                    <div className="absolute top-0 inset-x-0 h-6 bg-[#080A08]/90 backdrop-blur-sm z-10 flex items-center justify-between px-3 border-b border-white/[0.06]">
-                      <div className="flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF5F56]" />
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#FFBD2E]" />
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#27C93F]" />
-                      </div>
-                      <span className="text-[9px] font-mono text-[#A7ADA5] truncate max-w-[120px]">
-                        netweb.studio/{item.id}
-                      </span>
-                    </div>
-
-                    <img
-                      src={item.image}
-                      alt={`${item.category} digital solution preview`}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 pt-6 brightness-90 group-hover:brightness-100"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
-
-                    {/* Floating Metric Pill */}
-                    <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
-                      <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#080A08]/90 backdrop-blur-md text-[#A3FF12] border border-[#A3FF12]/30">
-                        {item.category.toUpperCase()}
-                      </span>
-                      <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#A3FF12] text-[#080A08]">
-                        {item.metrics[0].value} {item.metrics[0].label}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-5">
-                    <h3 className="text-base font-bold text-white mb-2 group-hover:text-[#A3FF12] transition-colors leading-snug">
-                      {item.tagline}
-                    </h3>
-
-                    <p className="text-xs text-[#A7ADA5] leading-relaxed mb-4 line-clamp-2">
-                      {item.description}
-                    </p>
-
-                    <div className="space-y-1.5 mb-4">
-                      {item.features.slice(0, 3).map((f, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-xs text-[#F5F7F2]">
-                          <Check className="w-3.5 h-3.5 text-[#A3FF12] shrink-0" />
-                          <span className="truncate">{f}</span>
+          <RevealGroup>
+            <MobileCardSlider
+              desktopGridClassName="md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+              swipeHintLabel="Swipe industries"
+            >
+              {businessSolutionsData.map((item) => (
+                <RevealChild
+                  key={item.id}
+                  className="rounded-xl bg-[#101310] border border-white/[0.08] hover:border-[#A3FF12]/40 transition-all flex flex-col justify-between overflow-hidden group shadow-lg h-full"
+                >
+                  <div>
+                    {/* Visual Image Header in Browser Mockup Frame */}
+                    <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
+                      <div className="absolute top-0 inset-x-0 h-6 bg-[#080A08]/90 backdrop-blur-sm z-10 flex items-center justify-between px-3 border-b border-white/[0.06]">
+                        <div className="flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#FF5F56]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#FFBD2E]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#27C93F]" />
                         </div>
-                      ))}
+                        <span className="text-[9px] font-mono text-[#A7ADA5] truncate max-w-[120px]">
+                          netweb.studio/{item.id}
+                        </span>
+                      </div>
+
+                      <img
+                        src={item.image}
+                        alt={`${item.category} digital solution preview`}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 pt-6 brightness-90 group-hover:brightness-100"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
+
+                      {/* Floating Metric Pill */}
+                      <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
+                        <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#080A08]/90 backdrop-blur-md text-[#A3FF12] border border-[#A3FF12]/30">
+                          {item.category.toUpperCase()}
+                        </span>
+                        <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#A3FF12] text-[#080A08]">
+                          {item.metrics[0].value} {item.metrics[0].label}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-5">
+                      <h3 className="text-base font-bold text-white mb-2 group-hover:text-[#A3FF12] transition-colors leading-snug">
+                        {item.tagline}
+                      </h3>
+
+                      <p className="text-xs text-[#A7ADA5] leading-relaxed mb-4 line-clamp-2">
+                        {item.description}
+                      </p>
+
+                      <div className="space-y-1.5 mb-4">
+                        {item.features.slice(0, 3).map((f, idx) => (
+                          <div key={idx} className="flex items-center gap-2 text-xs text-[#F5F7F2]">
+                            <Check className="w-3.5 h-3.5 text-[#A3FF12] shrink-0" />
+                            <span className="truncate">{f}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="p-5 pt-0 border-t border-white/[0.06]">
-                  <Button
-                    to={`/contact?industry=${encodeURIComponent(item.category)}`}
-                    variant="secondary"
-                    size="sm"
-                    className="w-full text-xs font-mono justify-center"
-                    withArrow
-                  >
-                    Build for {item.category}
-                  </Button>
-                </div>
-              </RevealChild>
-            ))}
+                  <div className="p-5 pt-0 border-t border-white/[0.06]">
+                    <Button
+                      to={`/contact?industry=${encodeURIComponent(item.category)}`}
+                      variant="secondary"
+                      size="sm"
+                      className="w-full text-xs font-mono justify-center"
+                      withArrow
+                    >
+                      Build for {item.category}
+                    </Button>
+                  </div>
+                </RevealChild>
+              ))}
+            </MobileCardSlider>
           </RevealGroup>
         </div>
       </section>

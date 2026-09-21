@@ -375,27 +375,34 @@ export const AuditForm: React.FC = () => {
                     Business Sector
                   </label>
 
-                  <select
-                    name="businessType"
-                    value={formData.businessType}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        businessType: e.target.value,
-                      })
-                    }
-                    className="w-full bg-[#080A08] border border-white/10 focus:border-[#A3FF12] rounded-md px-3 py-2.5 text-xs text-white focus:outline-none"
-                  >
-                    {businessTypes.map((type) => (
-                      <option
-                        key={type}
-                        value={type}
-                        className="bg-[#101310] text-white"
-                      >
-                        {type}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      name="businessType"
+                      value={formData.businessType}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          businessType: e.target.value,
+                        })
+                      }
+                      className="w-full max-w-full bg-[#080A08] border border-white/10 focus:border-[#A3FF12] rounded-md pl-3 pr-8 py-2.5 text-xs text-white focus:outline-none appearance-none cursor-pointer truncate"
+                    >
+                      {businessTypes.map((type) => (
+                        <option
+                          key={type}
+                          value={type}
+                          className="bg-[#101310] text-white"
+                        >
+                          {type}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div>
@@ -403,27 +410,34 @@ export const AuditForm: React.FC = () => {
                     Primary Digital Objective
                   </label>
 
-                  <select
-                    name="mainGoal"
-                    value={formData.mainGoal}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        mainGoal: e.target.value,
-                      })
-                    }
-                    className="w-full bg-[#080A08] border border-white/10 focus:border-[#A3FF12] rounded-md px-3 py-2.5 text-xs text-white focus:outline-none"
-                  >
-                    {goals.map((goal) => (
-                      <option
-                        key={goal}
-                        value={goal}
-                        className="bg-[#101310] text-white"
-                      >
-                        {goal}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      name="mainGoal"
+                      value={formData.mainGoal}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          mainGoal: e.target.value,
+                        })
+                      }
+                      className="w-full max-w-full bg-[#080A08] border border-white/10 focus:border-[#A3FF12] rounded-md pl-3 pr-8 py-2.5 text-xs text-white focus:outline-none appearance-none cursor-pointer truncate"
+                    >
+                      {goals.map((goal) => (
+                        <option
+                          key={goal}
+                          value={goal}
+                          className="bg-[#101310] text-white"
+                        >
+                          {goal}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
 

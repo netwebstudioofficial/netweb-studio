@@ -5,6 +5,7 @@ import { SectionTitle } from "../components/SectionTitle";
 import { Button } from "../components/Button";
 import { CheckCircle2, ShieldCheck, Clock, Layers, Sparkles } from "lucide-react";
 import { RevealOnScroll, RevealGroup, RevealChild } from "../components/RevealOnScroll";
+import { MobileCardSlider } from "../components/MobileCardSlider";
 
 export const ProcessPage: React.FC = () => {
   return (
@@ -48,126 +49,131 @@ export const ProcessPage: React.FC = () => {
             />
           </RevealOnScroll>
 
-          <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Pillar 1 */}
-            <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col">
-              <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
-                <img
-                  src="/assets/process/process-performance.webp"
-                  alt="Sub-1s Load Budget Performance"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
-                <div className="absolute top-2.5 right-2.5">
-                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#A3FF12] text-[#080A08]">
-                    100/100
-                  </span>
-                </div>
-              </div>
-              <div className="p-5 flex-1 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Clock className="w-4 h-4 text-[#A3FF12]" />
-                    <h3 className="text-base font-bold text-white">Sub-1s Load Budget</h3>
+          <RevealGroup>
+            <MobileCardSlider
+              desktopGridClassName="md:grid-cols-2 lg:grid-cols-4 gap-6"
+              swipeHintLabel="Swipe pillars"
+            >
+              {/* Pillar 1 */}
+              <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col h-full">
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
+                  <img
+                    src="/assets/process/process-performance.webp"
+                    alt="Sub-1s Load Budget Performance"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute top-2.5 right-2.5">
+                    <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#A3FF12] text-[#080A08]">
+                      100/100
+                    </span>
                   </div>
-                  <p className="text-xs text-[#A7ADA5] leading-relaxed">
-                    Zero bloated themes. We measure First Contentful Paint to guarantee peak Google Core Web Vitals.
-                  </p>
                 </div>
-              </div>
-            </RevealChild>
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Clock className="w-4 h-4 text-[#A3FF12]" />
+                      <h3 className="text-base font-bold text-white">Sub-1s Load Budget</h3>
+                    </div>
+                    <p className="text-xs text-[#A7ADA5] leading-relaxed">
+                      Zero bloated themes. We measure First Contentful Paint to guarantee peak Google Core Web Vitals.
+                    </p>
+                  </div>
+                </div>
+              </RevealChild>
 
-            {/* Pillar 2 */}
-            <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col">
-              <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
-                <img
-                  src="/assets/process/process-handover.webp"
-                  alt="Clean Codebase Handover"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
-                <div className="absolute top-2.5 right-2.5">
-                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#080A08]/90 text-[#A3FF12] border border-[#A3FF12]/30">
-                    100% OWNED
-                  </span>
-                </div>
-              </div>
-              <div className="p-5 flex-1 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <ShieldCheck className="w-4 h-4 text-[#A3FF12]" />
-                    <h3 className="text-base font-bold text-white">Clean Handover</h3>
+              {/* Pillar 2 */}
+              <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col h-full">
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
+                  <img
+                    src="/assets/process/process-handover.webp"
+                    alt="Clean Codebase Handover"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute top-2.5 right-2.5">
+                    <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#080A08]/90 text-[#A3FF12] border border-[#A3FF12]/30">
+                      100% OWNED
+                    </span>
                   </div>
-                  <p className="text-xs text-[#A7ADA5] leading-relaxed">
-                    You own 100% of your source code, domain, and assets. Documented repositories with zero vendor lock-in.
-                  </p>
                 </div>
-              </div>
-            </RevealChild>
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <ShieldCheck className="w-4 h-4 text-[#A3FF12]" />
+                      <h3 className="text-base font-bold text-white">Clean Handover</h3>
+                    </div>
+                    <p className="text-xs text-[#A7ADA5] leading-relaxed">
+                      You own 100% of your source code, domain, and assets. Documented repositories with zero vendor lock-in.
+                    </p>
+                  </div>
+                </div>
+              </RevealChild>
 
-            {/* Pillar 3 */}
-            <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col">
-              <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
-                <img
-                  src="/assets/process/process-fidelity.webp"
-                  alt="Pixel-perfect Design Fidelity"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
-                <div className="absolute top-2.5 right-2.5">
-                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#080A08]/90 text-[#A3FF12] border border-[#A3FF12]/30">
-                    PIXEL-EXACT
-                  </span>
-                </div>
-              </div>
-              <div className="p-5 flex-1 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Layers className="w-4 h-4 text-[#A3FF12]" />
-                    <h3 className="text-base font-bold text-white">Design Fidelity</h3>
+              {/* Pillar 3 */}
+              <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col h-full">
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
+                  <img
+                    src="/assets/process/process-fidelity.webp"
+                    alt="Pixel-perfect Design Fidelity"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute top-2.5 right-2.5">
+                    <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#080A08]/90 text-[#A3FF12] border border-[#A3FF12]/30">
+                      PIXEL-EXACT
+                    </span>
                   </div>
-                  <p className="text-xs text-[#A7ADA5] leading-relaxed">
-                    What you approve in design is pixel-for-pixel what gets deployed. No compromises between mockups and code.
-                  </p>
                 </div>
-              </div>
-            </RevealChild>
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Layers className="w-4 h-4 text-[#A3FF12]" />
+                      <h3 className="text-base font-bold text-white">Design Fidelity</h3>
+                    </div>
+                    <p className="text-xs text-[#A7ADA5] leading-relaxed">
+                      What you approve in design is pixel-for-pixel what gets deployed. No compromises between mockups and code.
+                    </p>
+                  </div>
+                </div>
+              </RevealChild>
 
-            {/* Pillar 4 */}
-            <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col">
-              <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
-                <img
-                  src="/assets/process/process-seo.webp"
-                  alt="SEO & Analytics Foundation"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
-                <div className="absolute top-2.5 right-2.5">
-                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#080A08]/90 text-[#A3FF12] border border-[#A3FF12]/30">
-                    SEARCH-READY
-                  </span>
-                </div>
-              </div>
-              <div className="p-5 flex-1 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#A3FF12]" />
-                    <h3 className="text-base font-bold text-white">SEO & Analytics</h3>
+              {/* Pillar 4 */}
+              <RevealChild className="rounded-xl bg-[#101310] border border-white/[0.08] overflow-hidden group hover:border-[#A3FF12]/40 transition-all flex flex-col h-full">
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#080A08]">
+                  <img
+                    src="/assets/process/process-seo.webp"
+                    alt="SEO & Analytics Foundation"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.75] group-hover:brightness-95"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#101310] via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute top-2.5 right-2.5">
+                    <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#080A08]/90 text-[#A3FF12] border border-[#A3FF12]/30">
+                      SEARCH-READY
+                    </span>
                   </div>
-                  <p className="text-xs text-[#A7ADA5] leading-relaxed">
-                    Every release includes OpenGraph social tags, JSON-LD structured schemas, and event tracking out of the box.
-                  </p>
                 </div>
-              </div>
-            </RevealChild>
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle2 className="w-4 h-4 text-[#A3FF12]" />
+                      <h3 className="text-base font-bold text-white">SEO & Analytics</h3>
+                    </div>
+                    <p className="text-xs text-[#A7ADA5] leading-relaxed">
+                      Every release includes OpenGraph social tags, JSON-LD structured schemas, and event tracking out of the box.
+                    </p>
+                  </div>
+                </div>
+              </RevealChild>
+            </MobileCardSlider>
           </RevealGroup>
         </div>
       </section>

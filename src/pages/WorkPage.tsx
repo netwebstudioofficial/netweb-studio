@@ -5,6 +5,7 @@ import { CaseStudyModal } from "../components/CaseStudyModal";
 import { Button } from "../components/Button";
 import { selectedWorkData, ProjectItem } from "../data/agencyData";
 import { RevealOnScroll, RevealGroup, RevealChild } from "../components/RevealOnScroll";
+import { MobileCardSlider } from "../components/MobileCardSlider";
 
 export const WorkPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
@@ -58,15 +59,20 @@ export const WorkPage: React.FC = () => {
             />
           </RevealOnScroll>
 
-          <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project) => (
-              <RevealChild key={project.id}>
-                <PortfolioCard
-                  project={project}
-                  onSelect={(p) => setActiveModalProject(p)}
-                />
-              </RevealChild>
-            ))}
+          <RevealGroup>
+            <MobileCardSlider
+              desktopGridClassName="md:grid-cols-2 lg:grid-cols-3 gap-6"
+              swipeHintLabel="Swipe projects"
+            >
+              {filteredProjects.map((project) => (
+                <RevealChild key={project.id} className="h-full">
+                  <PortfolioCard
+                    project={project}
+                    onSelect={(p) => setActiveModalProject(p)}
+                  />
+                </RevealChild>
+              ))}
+            </MobileCardSlider>
           </RevealGroup>
 
           {/* Bottom Custom Project Callout */}

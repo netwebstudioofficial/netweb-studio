@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { FaTelegram } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { MobileCardSlider } from "./MobileCardSlider";
 
 export const AiVisualShowcase: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"chatbot" | "automation">("chatbot");
@@ -322,7 +323,11 @@ export const AiVisualShowcase: React.FC = () => {
           </div>
 
           {/* Interactive Flow Nodes */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 relative">
+          <MobileCardSlider
+            desktopGridClassName="grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5"
+            cardWidthClassName="w-[78vw] max-w-[280px] sm:w-auto"
+            swipeHintLabel="Swipe pipeline"
+          >
             {[
               {
                 step: "01",
@@ -359,12 +364,12 @@ export const AiVisualShowcase: React.FC = () => {
                 desc: "Founder or sales rep receives instant Telegram summary.",
                 status: "Sub-2s Execution",
               },
-            ].map((node, i) => {
+            ].map((node) => {
               const IconComp = node.icon;
               return (
                 <div
                   key={node.step}
-                  className="p-5 rounded-xl bg-[#090b09] border border-white/[0.08] hover:border-[#A3FF12]/50 hover:bg-[#121812] transition-all duration-300 relative group flex flex-col justify-between"
+                  className="p-5 rounded-xl bg-[#090b09] border border-white/[0.08] hover:border-[#A3FF12]/50 hover:bg-[#121812] transition-all duration-300 relative group flex flex-col justify-between h-full"
                 >
                   <div className="absolute top-2 right-3 font-mono text-[11px] font-bold text-[#A3FF12]/70">
                     {node.step}
@@ -389,7 +394,7 @@ export const AiVisualShowcase: React.FC = () => {
                 </div>
               );
             })}
-          </div>
+          </MobileCardSlider>
 
           {/* Bottom Telemetry Metrics Bar */}
           <div className="p-4 rounded-xl bg-[#121612] border border-white/[0.08] grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
