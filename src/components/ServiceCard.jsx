@@ -43,11 +43,11 @@ export const ServiceCard = ({ service }) => {
   return (
     <Link
       to={`/services#${service.id}`}
-      className="group flex flex-col rounded-2xl bg-[#121612] border border-white/[0.08] hover:border-[#A3FF12]/50 hover:bg-[#151a15] transition-all duration-300 hover:shadow-[0_12px_36px_rgba(0,0,0,0.6),0_0_24px_rgba(163,255,18,0.12)] relative overflow-hidden"
+      className="group flex flex-col rounded-2xl bg-[#121612] border border-white/[0.08] hover:border-[#A3FF12]/50 hover:bg-[#151a15] transition-colors duration-200 relative overflow-hidden h-full"
       id={`service-card-${service.id}`}
     >
       {/* Subtle top indicator line */}
-      <div className="absolute top-0 left-0 w-0 h-[2.5px] bg-[#A3FF12] group-hover:w-full transition-all duration-500 z-20" />
+      <div className="absolute top-0 left-0 w-0 h-[2px] bg-[#A3FF12] group-hover:w-full transition-all duration-300 z-20" />
 
       {/* Visual Image Preview Banner with Browser/App Mockup Header */}
       <div className="relative w-full h-44 sm:h-48 overflow-hidden bg-[#0A0D0A] border-b border-white/[0.08]">
@@ -61,11 +61,11 @@ export const ServiceCard = ({ service }) => {
           </div>
         </div>
 
-        {/* High-res Image Preview with subtle zoom */}
+        {/* High-res Image Preview */}
         <img
           src={service.image}
           alt={`${service.title} interface preview`}
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.85] group-hover:brightness-100"
+          className="w-full h-full object-cover object-center brightness-[0.88] group-hover:brightness-100 transition-all duration-300"
           loading="lazy"
         />
 
@@ -77,7 +77,7 @@ export const ServiceCard = ({ service }) => {
           <span className="font-mono text-xs font-semibold text-[#A3FF12] px-2.5 py-0.5 rounded bg-[#080A08]/90 border border-[#A3FF12]/30 backdrop-blur-sm">
             {service.number}
           </span>
-          <div className="w-7 h-7 rounded-full bg-[#080A08]/90 border border-white/10 flex items-center justify-center text-[#A7ADA5] group-hover:text-[#080A08] group-hover:bg-[#A3FF12] group-hover:border-[#A3FF12] transition-all duration-200">
+          <div className="w-7 h-7 rounded-full bg-[#080A08]/90 border border-white/10 flex items-center justify-center text-[#A7ADA5] group-hover:text-[#080A08] group-hover:bg-[#A3FF12] group-hover:border-[#A3FF12] transition-colors duration-200">
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
         </div>

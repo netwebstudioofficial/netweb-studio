@@ -4,6 +4,7 @@ import { SectionTitle } from "../components/SectionTitle";
 import { Button } from "../components/Button";
 import { HeroVisual } from "../components/HeroVisual";
 import { ServiceCard } from "../components/ServiceCard";
+import { HomeServicesCarousel } from "../components/HomeServicesCarousel";
 import { SolutionTabs } from "../components/SolutionTabs";
 import { PortfolioCard } from "../components/PortfolioCard";
 import { PortfolioFilter } from "../components/PortfolioFilter";
@@ -99,11 +100,11 @@ export const HomePage = () => {
   const featuredLumenor = selectedWorkData.find((p) => p.id === "lumenor") || selectedWorkData[0];
 
   return (
-    <div className="w-full relative overflow-x-hidden pt-20">
+    <div className="w-full relative overflow-x-hidden">
       {/* ============================================================ */}
       {/* 1. HERO SECTION */}
       {/* ============================================================ */}
-      <section className="relative min-h-[92vh] flex items-center py-16 sm:py-24 border-b border-white/[0.08] overflow-hidden bg-[#080A08]" id="hero">
+      <section className="relative pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-16 border-b border-white/[0.08] overflow-hidden bg-[#080A08]" id="hero">
         {/* Interactive 3D Earth Live Rotation Background */}
         <EarthLiveGlobe />
 
@@ -111,9 +112,9 @@ export const HomePage = () => {
         <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             {/* Left Hero Column */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
               {/* Badges / Micro Text */}
               <div className="flex flex-wrap items-center gap-2.5">
                 <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141814] border border-[#A3FF12]/30 text-[#A3FF12] text-xs font-mono font-bold uppercase tracking-wider">
@@ -185,11 +186,11 @@ export const HomePage = () => {
       {/* 2. SECTION — INTRODUCTION */}
       {/* ============================================================ */}
       <section
-        className="py-20 sm:py-28 border-b border-white/[0.08] bg-[#0c0e0c]"
+        className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08] bg-[#0c0e0c]"
         id="introduction"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
+          <RevealOnScroll className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center mb-8 sm:mb-10">
             {/* Left: Large Typography */}
             <div className="lg:col-span-7">
               <div className="space-y-2">
@@ -218,7 +219,7 @@ export const HomePage = () => {
           {/* Visual Digital Craftsmanship Showcase Gallery */}
           <RevealGroup>
             <MobileCardSlider
-              desktopGridClassName="md:grid-cols-3 gap-6 pt-6"
+              desktopGridClassName="md:grid-cols-3 gap-6 pt-2"
               swipeHintLabel="Swipe pillars"
             >
               {/* Visual Card 1: Design System & Wireframing */}
@@ -286,7 +287,7 @@ export const HomePage = () => {
       {/* 3. SECTION — WHAT WE DO (SERVICES) */}
       {/* ============================================================ */}
       <section
-        className="py-20 sm:py-28 border-b border-white/[0.08] relative"
+        className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08] relative"
         id="services"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -299,20 +300,11 @@ export const HomePage = () => {
             />
           </RevealOnScroll>
 
-          <RevealGroup>
-            <MobileCardSlider
-              desktopGridClassName="md:grid-cols-2 lg:grid-cols-3 gap-6"
-              swipeHintLabel="Swipe services"
-            >
-              {servicesData.map((service) => (
-                <RevealChild key={service.id} className="h-full">
-                  <ServiceCard service={service} />
-                </RevealChild>
-              ))}
-            </MobileCardSlider>
-          </RevealGroup>
+          <RevealOnScroll delay={0.1}>
+            <HomeServicesCarousel />
+          </RevealOnScroll>
 
-          <RevealOnScroll delay={0.15} className="mt-12 text-center">
+          <RevealOnScroll delay={0.15} className="mt-6 sm:mt-8 text-center">
             <Button to="/services" variant="lime-outline" size="md" withArrow>
               View Full Service Deliverables & Engineering Specifications
             </Button>
@@ -324,7 +316,7 @@ export const HomePage = () => {
       {/* 4. SECTION — BUSINESS SOLUTIONS (INTERACTIVE TABS) */}
       {/* ============================================================ */}
       <section
-        className="py-20 sm:py-28 border-b border-white/[0.08] bg-[#0c0e0c]"
+        className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08] bg-[#0c0e0c]"
         id="solutions"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -347,11 +339,11 @@ export const HomePage = () => {
       {/* 5. FEATURED PROJECT — LUMENOR (CASE STUDY) */}
       {/* ============================================================ */}
       <section
-        className="py-20 sm:py-28 border-b border-white/[0.08] relative overflow-hidden"
+        className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08] relative overflow-hidden"
         id="featured-work"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll className="mb-8">
+          <RevealOnScroll className="mb-5 sm:mb-6">
             <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-3 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-3">
               FEATURED CASE STUDY
             </span>
@@ -368,7 +360,7 @@ export const HomePage = () => {
             className="bg-[#101310] border border-white/[0.12] rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-2xl relative group"
           >
             {/* Visual Media Column */}
-            <div className="lg:col-span-7 relative min-h-[340px] sm:min-h-[460px] overflow-hidden bg-[#080A08]">
+            <div className="lg:col-span-7 relative min-h-[340px] sm:min-h-[440px] overflow-hidden bg-[#080A08]">
               <img
                 src={featuredLumenor.image}
                 alt="LUMENOR Luxury Real Estate Experience"
@@ -383,8 +375,8 @@ export const HomePage = () => {
             </div>
 
             {/* Case Study Details Column */}
-            <div className="lg:col-span-5 p-6 sm:p-10 flex flex-col justify-between">
-              <div className="space-y-6">
+            <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between">
+              <div className="space-y-4 sm:space-y-5">
                 <div>
                   <p className="text-xs font-mono text-[#A7ADA5] uppercase tracking-wider mb-2">
                     Client & Sector
@@ -437,7 +429,7 @@ export const HomePage = () => {
                 </div>
               </div>
 
-              <div className="pt-8">
+              <div className="pt-6">
                 <button
                   onClick={() => setActiveModalProject(featuredLumenor)}
                   className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded bg-[#A3FF12] text-[#080A08] font-bold text-sm hover:bg-[#9CFF00] transition-colors cursor-pointer"
@@ -455,7 +447,7 @@ export const HomePage = () => {
       {/* 6. SECTION — OUR WORK (SELECTED WORK + FILTERING) */}
       {/* ============================================================ */}
       <section
-        className="py-20 sm:py-28 border-b border-white/[0.08]"
+        className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08]"
         id="work"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -493,7 +485,7 @@ export const HomePage = () => {
             </MobileCardSlider>
           </RevealGroup>
 
-          <RevealOnScroll delay={0.2} className="mt-12 text-center">
+          <RevealOnScroll delay={0.2} className="mt-8 sm:mt-10 text-center">
             <p className="text-xs text-[#A7ADA5] font-mono mb-4">
               All projects represent bespoke codebases engineered without generic pre-built templates.
             </p>
@@ -508,7 +500,7 @@ export const HomePage = () => {
       {/* 7. SECTION — BEFORE / AFTER COMPARISON */}
       {/* ============================================================ */}
       <section
-        className="py-20 sm:py-28 border-b border-white/[0.08] bg-[#0c0e0c]"
+        className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08] bg-[#0c0e0c]"
         id="comparison"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -530,10 +522,10 @@ export const HomePage = () => {
       {/* ============================================================ */}
       {/* 8. SECTION — CLIENT JOURNEY */}
       {/* ============================================================ */}
-      <section className="py-16 sm:py-20 border-b border-white/[0.08] bg-[#080A08]" id="journey">
+      <section className="py-10 sm:py-14 lg:py-16 border-b border-white/[0.08] bg-[#080A08]" id="journey">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
-            <p className="text-center font-mono text-xs text-[#A3FF12] uppercase tracking-widest mb-6">
+            <p className="text-center font-mono text-xs text-[#A3FF12] uppercase tracking-widest mb-4 sm:mb-5">
               THE CLIENT JOURNEY
             </p>
           </RevealOnScroll>
@@ -577,7 +569,7 @@ export const HomePage = () => {
       {/* ============================================================ */}
       {/* 10. SECTION — WHY NETWEB */}
       {/* ============================================================ */}
-      <section className="py-20 sm:py-28 border-b border-white/[0.08] bg-[#0c0e0c]" id="why-netweb">
+      <section className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08] bg-[#0c0e0c]" id="why-netweb">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
             <SectionTitle
@@ -619,9 +611,9 @@ export const HomePage = () => {
       {/* ============================================================ */}
       {/* 11. SECTION — TECHNOLOGY */}
       {/* ============================================================ */}
-      <section className="py-16 sm:py-20 border-b border-white/[0.08]" id="technologies">
+      <section className="py-10 sm:py-14 lg:py-16 border-b border-white/[0.08]" id="technologies">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll className="text-center max-w-2xl mx-auto mb-10">
+          <RevealOnScroll className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
             <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-2.5 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-3">
               STACK CAPABILITY
             </span>
@@ -663,7 +655,7 @@ export const HomePage = () => {
       {/* 12. SECTION — FREE WEBSITE AUDIT */}
       {/* ============================================================ */}
       <section
-        className="py-20 sm:py-28 border-b border-white/[0.08]"
+        className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08]"
         id="audit"
       >
         <RevealOnScroll className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -674,9 +666,9 @@ export const HomePage = () => {
       {/* ============================================================ */}
       {/* 13. SECTION — SAMPLE TESTIMONIALS */}
       {/* ============================================================ */}
-      <section className="py-20 sm:py-28 border-b border-white/[0.08] bg-[#0c0e0c]" id="testimonials">
+      <section className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08] bg-[#0c0e0c]" id="testimonials">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll className="mb-12">
+          <RevealOnScroll className="mb-6 sm:mb-8">
             <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-2.5 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-3">
               Sample Client Feedback
             </span>
@@ -707,7 +699,7 @@ export const HomePage = () => {
       {/* 14. SECTION — FAQ */}
       {/* ============================================================ */}
       <section
-        className="py-20 sm:py-28 border-b border-white/[0.08]"
+        className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08]"
         id="faq"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -729,11 +721,11 @@ export const HomePage = () => {
       {/* ============================================================ */}
       {/* 15. FINAL FULL-WIDTH CTA */}
       {/* ============================================================ */}
-      <section className="py-24 sm:py-32 relative overflow-hidden bg-[#080A08]" id="final-cta">
+      <section className="py-14 sm:py-18 lg:py-22 relative overflow-hidden bg-[#080A08]" id="final-cta">
         <div className="absolute inset-0 bg-radial-gradient pointer-events-none" />
         <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
 
-        <RevealOnScroll className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+        <RevealOnScroll className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-5 sm:space-y-6">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141814] border border-[#A3FF12]/40 text-[#A3FF12] text-xs font-mono font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
             READY TO STAND OUT?

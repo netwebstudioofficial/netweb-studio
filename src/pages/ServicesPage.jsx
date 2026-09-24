@@ -47,20 +47,20 @@ export const ServicesPage = () => {
   };
 
   return (
-    <div className="w-full pt-28 pb-20 relative overflow-hidden">
+    <div className="w-full pt-20 sm:pt-24 pb-12 sm:pb-16 relative overflow-hidden">
       {/* Background Visual Effects - Glowing Mesh & Ambient Beams */}
       <div className="absolute top-20 left-1/4 w-96 h-96 rounded-full bg-[#A3FF12]/10 blur-[140px] pointer-events-none -z-10" />
       <div className="absolute top-[800px] right-10 w-[500px] h-[500px] rounded-full bg-[#A3FF12]/5 blur-[160px] pointer-events-none -z-10" />
       <div className="absolute bottom-40 left-10 w-80 h-80 rounded-full bg-emerald-500/5 blur-[120px] pointer-events-none -z-10" />
 
       {/* Page Header */}
-      <section className="border-b border-white/[0.08] pb-16 relative">
+      <section className="border-b border-white/[0.08] pb-10 sm:pb-12 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
-            <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-3 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-4">
+            <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-3 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-2.5 sm:mb-3">
               Studio Capabilities
             </span>
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-[#F5F7F2] tracking-tight uppercase font-['Space_Grotesk'] leading-[1.08] mb-6">
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-[#F5F7F2] tracking-tight uppercase font-['Space_Grotesk'] leading-[1.08] mb-4 sm:mb-5">
               DIGITAL CRAFT. <br />
               <span className="text-[#A3FF12]">ENGINEERED TO PERFORM.</span>
             </h1>
@@ -72,9 +72,9 @@ export const ServicesPage = () => {
       </section>
 
       {/* Interactive AI Automation & Chatbot Visual Showcase Section */}
-      <section className="py-16 sm:py-20 border-b border-white/[0.08] bg-[#0a0d0a]/60">
+      <section className="py-12 sm:py-16 border-b border-white/[0.08] bg-[#0a0d0a]/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll className="text-center max-w-2xl mx-auto mb-10">
+          <RevealOnScroll className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
             <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-2.5 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-3">
               NEXT-GEN AI AUTOMATION
             </span>
@@ -93,8 +93,8 @@ export const ServicesPage = () => {
       </section>
 
       {/* Deep Service List */}
-      <section className="py-16 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="py-12 sm:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
           {servicesData.map((service) => (
             <RevealOnScroll
               key={service.id}
@@ -195,9 +195,9 @@ export const ServicesPage = () => {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-16 text-center max-w-4xl mx-auto px-4 relative">
+      <section className="py-12 sm:py-16 text-center max-w-4xl mx-auto px-4 relative">
         <RevealOnScroll>
-          <h3 className="text-3xl font-extrabold text-white mb-4 uppercase">
+          <h3 className="text-3xl font-extrabold text-white mb-3 uppercase">
             Unsure which service matches your current stage?
           </h3>
           <p className="text-sm text-[#A7ADA5] mb-6">

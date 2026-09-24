@@ -9,15 +9,15 @@ import { MobileCardSlider } from "../components/MobileCardSlider";
 
 export const ProcessPage = () => {
   return (
-    <div className="w-full pt-28 pb-20">
+    <div className="w-full pt-20 sm:pt-24 pb-12 sm:pb-16">
       {/* Header */}
-      <section className="border-b border-white/[0.08] pb-16">
+      <section className="border-b border-white/[0.08] pb-10 sm:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
-            <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-3 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-4">
+            <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-3 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-2.5 sm:mb-3">
               Production Engineering
             </span>
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-[#F5F7F2] tracking-tight uppercase font-['Space_Grotesk'] leading-[1.08] mb-6">
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-[#F5F7F2] tracking-tight uppercase font-['Space_Grotesk'] leading-[1.08] mb-4 sm:mb-5">
               FROM IDEA TO IMPACT. <br />
               <span className="text-[#A3FF12]">THE NETWEB PRODUCTION CYCLE.</span>
             </h1>
@@ -29,7 +29,7 @@ export const ProcessPage = () => {
       </section>
 
       {/* Process Interactive Stepper */}
-      <section className="py-16 sm:py-24 border-b border-white/[0.08]">
+      <section className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
             <ProcessTimeline />
@@ -38,7 +38,7 @@ export const ProcessPage = () => {
       </section>
 
       {/* Quality Standards & Principles with High-Visual Cards */}
-      <section className="py-16 sm:py-24 border-b border-white/[0.08] bg-[#0c0e0c]">
+      <section className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08] bg-[#0c0e0c]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
             <SectionTitle
@@ -179,7 +179,7 @@ export const ProcessPage = () => {
       </section>
 
       {/* Before / After Benchmark */}
-      <section className="py-16 sm:py-24">
+      <section className="py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
             <SectionTitle

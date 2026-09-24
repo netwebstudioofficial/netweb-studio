@@ -30,7 +30,7 @@ export const BeforeAfterSlider = () => {
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
-        className="relative h-[380px] sm:h-[440px] rounded-xl overflow-hidden border border-white/[0.12] select-none bg-[#0a0d0a] shadow-2xl cursor-ew-resize mb-10"
+        className="relative h-[380px] sm:h-[440px] rounded-xl overflow-hidden border border-white/[0.12] select-none bg-[#0a0d0a] shadow-2xl cursor-ew-resize mb-6 sm:mb-8"
       >
         {/* AFTER (Right/Background: NETWEB Studio Modern Build) */}
         <div className="absolute inset-0 bg-[#080A08] p-6 sm:p-10 flex flex-col justify-between">

@@ -9,15 +9,15 @@ import { MobileCardSlider } from "../components/MobileCardSlider";
 
 export const PricingPage = () => {
   return (
-    <div className="w-full pt-28 pb-20">
+    <div className="w-full pt-20 sm:pt-24 pb-12 sm:pb-16">
       {/* Header */}
-      <section className="border-b border-white/[0.08] pb-16">
+      <section className="border-b border-white/[0.08] pb-10 sm:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
-            <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-3 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-4">
+            <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-3 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-2.5 sm:mb-3">
               Transparent Investment
             </span>
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-[#F5F7F2] tracking-tight uppercase font-['Space_Grotesk'] leading-[1.08] mb-6">
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-[#F5F7F2] tracking-tight uppercase font-['Space_Grotesk'] leading-[1.08] mb-4 sm:mb-5">
               WHAT DOES YOUR <br />
               <span className="text-[#A3FF12]">PROJECT NEED?</span>
             </h1>
@@ -29,9 +29,9 @@ export const PricingPage = () => {
       </section>
 
       {/* Interactive Estimator */}
-      <section className="py-16 sm:py-24 border-b border-white/[0.08]">
+      <section className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll className="mb-10">
+          <RevealOnScroll className="mb-6 sm:mb-8">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white uppercase tracking-tight">
               Interactive Scope & Investment Estimator
             </h2>
@@ -46,7 +46,7 @@ export const PricingPage = () => {
       </section>
 
       {/* Tier Breakdown Table with Visual Deliverable Previews */}
-      <section className="py-16 sm:py-24 border-b border-white/[0.08] bg-[#0c0e0c]">
+      <section className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08] bg-[#0c0e0c]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
             <SectionTitle
@@ -261,7 +261,7 @@ export const PricingPage = () => {
       </section>
 
       {/* Pricing FAQs */}
-      <section className="py-16 sm:py-24">
+      <section className="py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
             <SectionTitle

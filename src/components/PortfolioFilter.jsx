@@ -6,7 +6,7 @@ export const PortfolioFilter = ({
   onSelectCategory,
 }) => {
   return (
-    <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-4 pt-1 no-scrollbar mb-8" id="portfolio-filter-bar">
+    <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-3 pt-1 no-scrollbar mb-5 sm:mb-6" id="portfolio-filter-bar">
       {categories.map((category) => {
         const isSelected = activeCategory === category;
         return (

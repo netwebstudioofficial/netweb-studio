@@ -6,12 +6,12 @@ import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#050605] border-t border-white/[0.08] text-[#F5F7F2] pt-16 pb-12 relative overflow-hidden" id="site-footer">
+    <footer className="bg-[#050605] border-t border-white/[0.08] text-[#F5F7F2] pt-12 sm:pt-14 pb-8 sm:pb-10 relative overflow-hidden" id="site-footer">
       {/* Subtle top lime glow line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-[#A3FF12]/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-white/[0.08]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-10 sm:pb-12 border-b border-white/[0.08]">
           {/* Brand Column */}
           <div className="lg:col-span-4 space-y-4">
             <Logo variant="full" />

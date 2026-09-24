@@ -9,24 +9,24 @@ import { MobileCardSlider } from "../components/MobileCardSlider";
 
 export const SolutionsPage = () => {
   return (
-    <div className="w-full pt-28 pb-20">
+    <div className="w-full pt-20 sm:pt-24 pb-12 sm:pb-16">
       {/* Header */}
-      <section className="border-b border-white/[0.08] pb-16">
+      <section className="border-b border-white/[0.08] pb-10 sm:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
-            <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-3 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-4">
+            <span className="font-mono text-xs text-[#A3FF12] uppercase tracking-widest px-3 py-1 rounded bg-[#141814] border border-[#A3FF12]/20 inline-block mb-2.5 sm:mb-3">
               Specialized Architectures
             </span>
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-[#F5F7F2] tracking-tight uppercase font-['Space_Grotesk'] leading-[1.08] mb-6">
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-[#F5F7F2] tracking-tight uppercase font-['Space_Grotesk'] leading-[1.08] mb-4 sm:mb-5">
               INDUSTRY SOLUTIONS. <br />
               <span className="text-[#A3FF12]">ZERO COOKIE-CUTTER TEMPLATES.</span>
             </h1>
-            <p className="text-base sm:text-xl text-[#A7ADA5] max-w-3xl leading-relaxed mb-8">
+            <p className="text-base sm:text-xl text-[#A7ADA5] max-w-3xl leading-relaxed mb-5 sm:mb-6">
               Different business categories require radically different technical mechanisms. A luxury restaurant needs direct reservations and instant ordering; a healthcare clinic needs HIPAA-ready patient inquiries; a real estate firm needs immersive high-resolution property showcases.
             </p>
 
             {/* Visual Sector Snapshot Pill Strip */}
-            <div className="flex flex-wrap gap-2 pt-2">
+            <div className="flex flex-wrap gap-2 pt-1">
               {businessSolutionsData.map((item) => (
                 <div
                   key={item.id}
@@ -42,9 +42,9 @@ export const SolutionsPage = () => {
       </section>
 
       {/* Interactive Tabs Showcase */}
-      <section className="py-16 sm:py-24 border-b border-white/[0.08]">
+      <section className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll className="mb-10">
+          <RevealOnScroll className="mb-6 sm:mb-8">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white uppercase tracking-tight">
               Interactive Industry Blueprint
             </h2>
@@ -59,7 +59,7 @@ export const SolutionsPage = () => {
       </section>
 
       {/* Complete Industry Breakdown Grid — High-Visual Card Layout */}
-      <section className="py-16 sm:py-24">
+      <section className="py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
             <SectionTitle
