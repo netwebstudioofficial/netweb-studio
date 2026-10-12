@@ -12,8 +12,6 @@ const INITIAL_VIRTUAL_INDEX = MIDDLE_SET_INDEX * N; // 18 (first card of middle 
 export const HomeServicesCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(INITIAL_VIRTUAL_INDEX);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragDeltaX, setDragDeltaX] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // Responsive measurements (container width, card width, gap)
@@ -23,17 +21,27 @@ export const HomeServicesCarousel = () => {
     gap: 24,
   });
 
+  const rootRef = useRef(null);
   const containerRef = useRef(null);
   const trackRef = useRef(null);
   const firstCardRef = useRef(null);
   const dropdownRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
 
-  // Drag tracking refs
+  // High-performance touch and drag gesture refs (avoiding React state re-renders during active swipe)
+  const isPointerDownRef = useRef(false);
+  const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
   const startYRef = useRef(0);
-  const isPointerDownRef = useRef(false);
+  const startTimeRef = useRef(0);
+  const lastXRef = useRef(0);
+  const lastTimeRef = useRef(0);
+  const dragDeltaXRef = useRef(0);
   const hasDraggedRef = useRef(false);
+  const isDirectionLockedRef = useRef(false);
+  const isHorizontalSwipeRef = useRef(false);
   const animationTimeoutRef = useRef(null);
+  const rafIdRef = useRef(null);
 
   // Build the repeated items array
   const repeatedItems = useMemo(() => {
@@ -61,12 +69,15 @@ export const HomeServicesCarousel = () => {
     let cGap = 24;
 
     if (cWidth < 640) {
+      // Mobile: comfortable width with clear peek of adjacent cards
       cCardWidth = Math.min(320, Math.floor(cWidth * 0.82));
       cGap = 16;
     } else if (cWidth < 1024) {
-      cCardWidth = 340;
+      // Tablet: slightly larger, balanced spacing
+      cCardWidth = Math.min(370, Math.floor(cWidth * 0.52));
       cGap = 20;
     } else {
+      // Desktop: refined luxury dimensions
       cCardWidth = 390;
       cGap = 24;
     }
@@ -88,12 +99,34 @@ export const HomeServicesCarousel = () => {
   const activeRealIndex = ((currentIndex % N) + N) % N;
   const currentService = servicesData[activeRealIndex] || servicesData[0];
 
+  // Helper to calculate target translation for an index
+  const getTargetTranslateX = useCallback(
+    (index) => {
+      const itemStride = metrics.cardWidth + metrics.gap;
+      const containerCenter = metrics.containerWidth / 2;
+      return containerCenter - (index * itemStride + metrics.cardWidth / 2);
+    },
+    [metrics]
+  );
+
   // Navigate to an index with smooth transition
-  const goToIndex = useCallback((targetIndex) => {
-    if (animationTimeoutRef.current) clearTimeout(animationTimeoutRef.current);
-    setIsTransitioning(true);
-    setCurrentIndex(targetIndex);
-  }, []);
+  const goToIndex = useCallback(
+    (targetIndex) => {
+      if (animationTimeoutRef.current) clearTimeout(animationTimeoutRef.current);
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+
+      setIsTransitioning(true);
+      setCurrentIndex(targetIndex);
+
+      // Apply transition styling directly to track
+      if (trackRef.current) {
+        const targetX = getTargetTranslateX(targetIndex);
+        trackRef.current.style.transition = "transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1)";
+        trackRef.current.style.transform = `translate3d(${targetX}px, 0, 0)`;
+      }
+    },
+    [getTargetTranslateX]
+  );
 
   // Silent normalization once animation finishes
   const handleTransitionEnd = useCallback(() => {
@@ -102,11 +135,27 @@ export const HomeServicesCarousel = () => {
     setCurrentIndex((curr) => {
       const real = ((curr % N) + N) % N;
       if (curr < N || curr >= N * 3) {
-        return MIDDLE_SET_INDEX * N + real;
+        const normalizedIndex = MIDDLE_SET_INDEX * N + real;
+        if (trackRef.current) {
+          trackRef.current.style.transition = "none";
+          trackRef.current.style.transform = `translate3d(${getTargetTranslateX(normalizedIndex)}px, 0, 0)`;
+        }
+        return normalizedIndex;
       }
       return curr;
     });
-  }, []);
+  }, [getTargetTranslateX]);
+
+  // Keep track in correct position on initial load and resize
+  useEffect(() => {
+    if (!isDraggingRef.current && trackRef.current) {
+      const targetX = getTargetTranslateX(currentIndex);
+      trackRef.current.style.transition = isTransitioning
+        ? "transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1)"
+        : "none";
+      trackRef.current.style.transform = `translate3d(${targetX}px, 0, 0)`;
+    }
+  }, [metrics, currentIndex, getTargetTranslateX, isTransitioning]);
 
   // Backup timer in case transitionend event does not fire (e.g., hidden tab)
   useEffect(() => {
@@ -134,7 +183,6 @@ export const HomeServicesCarousel = () => {
   const handleSelectService = useCallback(
     (targetRealIdx) => {
       let diff = targetRealIdx - activeRealIndex;
-      // shortest distance in mod 9
       if (diff > Math.floor(N / 2)) diff -= N;
       if (diff < -Math.floor((N - 1) / 2)) diff += N;
       goToIndex(currentIndex + diff);
@@ -165,54 +213,197 @@ export const HomeServicesCarousel = () => {
     };
   }, [dropdownOpen]);
 
-  // Pointer drag events for smooth swipe & drag
-  const handlePointerDown = (e) => {
-    if (e.button !== 0 && e.pointerType === "mouse") return;
+  // Window-level keydown listener: Left & Right arrow keys for seamless accessibility
+  useEffect(() => {
+    const handleGlobalKeyDown = (e) => {
+      if (e.defaultPrevented) return;
+      const root = rootRef.current;
+      if (!root) return;
+
+      const hasFocus = root.contains(document.activeElement);
+      if (!hasFocus && !isHovered) return;
+
+      const target = e.target;
+      const isInput =
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable);
+      if (isInput) return;
+
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        handlePrev();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        handleNext();
+      }
+    };
+
+    window.addEventListener("keydown", handleGlobalKeyDown);
+    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
+  }, [handlePrev, handleNext, isHovered]);
+
+  // ============================================================
+  // HIGH-PERFORMANCE TOUCH & DRAG EVENT HANDLERS
+  // ============================================================
+
+  const handleDragStart = (clientX, clientY) => {
+    if (animationTimeoutRef.current) clearTimeout(animationTimeoutRef.current);
     isPointerDownRef.current = true;
+    isDraggingRef.current = false;
     hasDraggedRef.current = false;
-    startXRef.current = e.clientX;
-    startYRef.current = e.clientY;
-    setIsTransitioning(false);
-    setIsDragging(true);
-    setDragDeltaX(0);
+    isDirectionLockedRef.current = false;
+    isHorizontalSwipeRef.current = false;
+    startXRef.current = clientX;
+    startYRef.current = clientY;
+    lastXRef.current = clientX;
+    startTimeRef.current = Date.now();
+    lastTimeRef.current = Date.now();
+    dragDeltaXRef.current = 0;
   };
 
-  const handlePointerMove = (e) => {
+  const handleDragMove = (clientX, clientY, e) => {
     if (!isPointerDownRef.current) return;
-    const deltaX = e.clientX - startXRef.current;
-    const deltaY = e.clientY - startYRef.current;
 
-    // Detect horizontal intention
-    if (Math.abs(deltaX) > 6 || Math.abs(deltaY) > 6) {
-      if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        hasDraggedRef.current = true;
-        setDragDeltaX(deltaX);
+    const deltaX = clientX - startXRef.current;
+    const deltaY = clientY - startYRef.current;
+
+    // Detect gesture intention in first 6px
+    if (!isDirectionLockedRef.current) {
+      if (Math.abs(deltaX) > 6 || Math.abs(deltaY) > 6) {
+        isDirectionLockedRef.current = true;
+        if (Math.abs(deltaX) >= Math.abs(deltaY)) {
+          // Horizontal intent: lock to carousel swipe
+          isHorizontalSwipeRef.current = true;
+          isDraggingRef.current = true;
+          setIsTransitioning(false);
+          if (trackRef.current) {
+            trackRef.current.style.transition = "none";
+          }
+        } else {
+          // Vertical intent: release to normal page scrolling
+          isHorizontalSwipeRef.current = false;
+          isPointerDownRef.current = false;
+          return;
+        }
       }
+    }
+
+    if (isHorizontalSwipeRef.current) {
+      if (e && e.cancelable) {
+        e.preventDefault();
+      }
+
+      hasDraggedRef.current = true;
+      dragDeltaXRef.current = deltaX;
+      lastXRef.current = clientX;
+      lastTimeRef.current = Date.now();
+
+      // Direct GPU transform update via RAF without triggering React re-renders
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+      rafIdRef.current = requestAnimationFrame(() => {
+        if (trackRef.current) {
+          const baseX = getTargetTranslateX(currentIndex);
+          const currentX = baseX + deltaX;
+          trackRef.current.style.transform = `translate3d(${currentX}px, 0, 0)`;
+        }
+      });
     }
   };
 
-  const handlePointerUp = () => {
-    if (!isPointerDownRef.current) return;
-    isPointerDownRef.current = false;
-    setIsDragging(false);
+  const handleDragEnd = () => {
+    if (!isPointerDownRef.current && !isDraggingRef.current) return;
 
-    const threshold = Math.min(65, metrics.cardWidth * 0.16);
-    if (dragDeltaX < -threshold) {
-      goToIndex(currentIndex + 1);
-    } else if (dragDeltaX > threshold) {
-      goToIndex(currentIndex - 1);
+    isPointerDownRef.current = false;
+    const wasDragging = isDraggingRef.current;
+    isDraggingRef.current = false;
+    isDirectionLockedRef.current = false;
+    isHorizontalSwipeRef.current = false;
+
+    if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+
+    if (wasDraggedOrFlicked(wasDragging)) {
+      // Completed gesture handled in wasDraggedOrFlicked
     } else {
       goToIndex(currentIndex);
     }
-    setDragDeltaX(0);
   };
 
-  // Intercept click when user was dragging so link doesn't open
+  const wasDraggedOrFlicked = (wasDragging) => {
+    if (!wasDragging) return false;
+
+    const deltaX = dragDeltaXRef.current;
+    const now = Date.now();
+    const elapsed = Math.max(1, now - startTimeRef.current);
+    const velocity = deltaX / elapsed; // px/ms
+
+    // Natural flick or distance threshold
+    const flickThreshold = 0.22; // px/ms
+    const distanceThreshold = Math.min(75, metrics.cardWidth * 0.18);
+
+    if (velocity < -flickThreshold || deltaX < -distanceThreshold) {
+      // Swiped left -> advance to next card
+      goToIndex(currentIndex + 1);
+      return true;
+    } else if (velocity > flickThreshold || deltaX > distanceThreshold) {
+      // Swiped right -> go to previous card
+      goToIndex(currentIndex - 1);
+      return true;
+    }
+
+    return false;
+  };
+
+  // Pointer event listeners (desktop mouse + modern touch)
+  const onPointerDown = (e) => {
+    if (e.button !== 0 && e.pointerType === "mouse") return;
+    try {
+      e.currentTarget.setPointerCapture?.(e.pointerId);
+    } catch {
+      // Safe fallback if pointer capture is not supported
+    }
+    handleDragStart(e.clientX, e.clientY);
+  };
+
+  const onPointerMove = (e) => {
+    handleDragMove(e.clientX, e.clientY, e);
+  };
+
+  const onPointerUp = (e) => {
+    try {
+      e.currentTarget.releasePointerCapture?.(e.pointerId);
+    } catch {
+      // Safe fallback
+    }
+    handleDragEnd();
+  };
+
+  // Dedicated touch listeners for guaranteed touch-swipe on iOS/Android
+  const onTouchStart = (e) => {
+    if (e.touches.length === 1) {
+      handleDragStart(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  };
+
+  const onTouchMove = (e) => {
+    if (e.touches.length === 1) {
+      handleDragMove(e.touches[0].clientX, e.touches[0].clientY, e);
+    }
+  };
+
+  const onTouchEnd = () => {
+    handleDragEnd();
+  };
+
+  // Intercept click when user was dragging/swiping so link doesn't open
   const handleClickCapture = (e) => {
     if (hasDraggedRef.current) {
       e.preventDefault();
       e.stopPropagation();
-      hasDraggedRef.current = false;
+      setTimeout(() => {
+        hasDraggedRef.current = false;
+      }, 50);
     }
   };
 
@@ -224,15 +415,12 @@ export const HomeServicesCarousel = () => {
     }
   };
 
-  // Compute transform translateX to place currentIndex precisely at container center
-  const itemStride = metrics.cardWidth + metrics.gap;
-  const containerCenter = metrics.containerWidth / 2;
-  const targetTranslateX = containerCenter - (currentIndex * itemStride + metrics.cardWidth / 2);
-  const currentTranslateX = targetTranslateX + dragDeltaX;
-
   return (
     <div
-      className="w-full relative select-none"
+      ref={rootRef}
+      className="w-full relative select-none outline-none focus-visible:ring-1 focus-visible:ring-[#A3FF12]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080908] rounded-2xl transition-shadow"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       onKeyDown={(e) => {
         if (e.key === "ArrowLeft") {
           e.preventDefault();
@@ -244,7 +432,8 @@ export const HomeServicesCarousel = () => {
       }}
       tabIndex={0}
       role="region"
-      aria-label="Services carousel"
+      aria-roledescription="carousel"
+      aria-label="Services carousel. Use left and right arrow keys to navigate."
     >
       {/* 
         Horizontal Carousel Window:
@@ -254,10 +443,14 @@ export const HomeServicesCarousel = () => {
       <div
         ref={containerRef}
         className="relative w-full overflow-hidden py-4 cursor-grab active:cursor-grabbing touch-pan-y"
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerUp}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        onTouchCancel={onTouchEnd}
         onClickCapture={handleClickCapture}
       >
         {/* Soft edge fade for luxury depth */}
@@ -273,14 +466,14 @@ export const HomeServicesCarousel = () => {
           ref={trackRef}
           onTransitionEnd={handleTransitionEnd}
           style={{
-            transform: `translate3d(${currentTranslateX}px, 0, 0)`,
+            transform: `translate3d(${getTargetTranslateX(currentIndex)}px, 0, 0)`,
             transition: isTransitioning
               ? "transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1)"
               : "none",
             gap: `${metrics.gap}px`,
             willChange: "transform",
           }}
-          className={`flex items-stretch ${isDragging ? "pointer-events-none" : ""}`}
+          className="flex items-stretch"
         >
           {repeatedItems.map((service, itemIdx) => {
             const isFocused = itemIdx === currentIndex;
@@ -323,7 +516,9 @@ export const HomeServicesCarousel = () => {
           type="button"
           onClick={handlePrev}
           aria-label="Previous service"
-          className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#121612] border border-white/[0.12] hover:border-[#A3FF12]/60 text-white hover:text-[#A3FF12] flex items-center justify-center transition-all duration-200 shadow-sm shrink-0 cursor-pointer active:scale-95"
+          title="Previous service (Left arrow key)"
+          aria-keyshortcuts="ArrowLeft"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#121612] border border-white/[0.12] hover:border-[#A3FF12]/60 text-white hover:text-[#A3FF12] flex items-center justify-center transition-all duration-200 shadow-sm shrink-0 cursor-pointer active:scale-95 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#A3FF12]"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -336,7 +531,7 @@ export const HomeServicesCarousel = () => {
             aria-haspopup="listbox"
             aria-expanded={dropdownOpen}
             aria-label="Select service card"
-            className="h-9 sm:h-10 px-3.5 sm:px-4 rounded-xl bg-[#121612] border border-white/[0.14] hover:border-[#A3FF12]/60 text-left flex items-center gap-2.5 sm:gap-3 transition-all duration-200 cursor-pointer w-[240px] sm:w-[320px] max-w-[70vw] justify-between shadow-sm active:scale-[0.99]"
+            className="h-9 sm:h-10 px-3.5 sm:px-4 rounded-xl bg-[#121612] border border-white/[0.14] hover:border-[#A3FF12]/60 text-left flex items-center gap-2.5 sm:gap-3 transition-all duration-200 cursor-pointer w-[240px] sm:w-[320px] max-w-[70vw] justify-between shadow-sm active:scale-[0.99] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#A3FF12]"
           >
             <span className="flex items-center gap-2 truncate">
               <span className="font-mono text-xs font-bold text-[#A3FF12] bg-[#161d16] px-1.5 py-0.5 rounded border border-[#A3FF12]/30 shrink-0">
@@ -402,17 +597,24 @@ export const HomeServicesCarousel = () => {
           type="button"
           onClick={handleNext}
           aria-label="Next service"
-          className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#121612] border border-white/[0.12] hover:border-[#A3FF12]/60 text-white hover:text-[#A3FF12] flex items-center justify-center transition-all duration-200 shadow-sm shrink-0 cursor-pointer active:scale-95"
+          title="Next service (Right arrow key)"
+          aria-keyshortcuts="ArrowRight"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#121612] border border-white/[0.12] hover:border-[#A3FF12]/60 text-white hover:text-[#A3FF12] flex items-center justify-center transition-all duration-200 shadow-sm shrink-0 cursor-pointer active:scale-95 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#A3FF12]"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
 
-        {/* Card Counter Badge */}
-        <div className="flex items-center">
+        {/* Card Counter Badge & Keyboard hint */}
+        <div className="flex items-center gap-2">
           <span className="text-[11px] font-mono text-[#A7ADA5] bg-[#121612] px-2.5 py-1.5 rounded-xl border border-white/[0.08]">
             <span className="text-[#A3FF12] font-bold">{currentService.number}</span>
             <span className="mx-1 text-white/30">/</span>
             <span>0{servicesData.length}</span>
+          </span>
+          <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono text-[#A7ADA5]/70 bg-[#121612] px-2 py-1 rounded-xl border border-white/[0.06]">
+            <kbd className="px-1 py-0.2 bg-white/10 rounded text-[9px] text-[#A3FF12] font-semibold">←</kbd>
+            <kbd className="px-1 py-0.2 bg-white/10 rounded text-[9px] text-[#A3FF12] font-semibold">→</kbd>
+            <span className="text-[9px]">keys</span>
           </span>
         </div>
       </div>

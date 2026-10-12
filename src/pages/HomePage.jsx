@@ -316,7 +316,7 @@ export const HomePage = () => {
       {/* 4. SECTION — BUSINESS SOLUTIONS (INTERACTIVE TABS) */}
       {/* ============================================================ */}
       <section
-        className="py-12 sm:py-16 lg:py-20 border-b border-white/[0.08] bg-[#0c0e0c]"
+        className="py-10 sm:py-14 lg:py-16 border-b border-white/[0.08] bg-[#0c0e0c]"
         id="solutions"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -326,6 +326,7 @@ export const HomePage = () => {
               title="BUILT AROUND YOUR BUSINESS."
               subtitle="Every industry has unique operational friction. Select your sector to inspect our custom conversion architecture."
               align="left"
+              className="mb-5 sm:mb-7 lg:mb-8"
             />
           </RevealOnScroll>
 
@@ -471,7 +472,8 @@ export const HomePage = () => {
           {/* Portfolio Grid */}
           <RevealGroup>
             <MobileCardSlider
-              desktopGridClassName="md:grid-cols-2 lg:grid-cols-3 gap-6"
+              desktopGridClassName="lg:grid-cols-3 gap-6"
+              cardWidthClassName="w-[85vw] max-w-[340px] sm:w-[380px] sm:max-w-[400px] md:w-[440px] md:max-w-[460px]"
               swipeHintLabel="Swipe projects"
             >
               {filteredProjects.map((project) => (

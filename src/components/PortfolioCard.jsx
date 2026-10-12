@@ -5,7 +5,16 @@ export const PortfolioCard = ({ project, onSelect }) => {
   return (
     <div
       onClick={() => onSelect(project)}
-      className="group relative rounded-xl overflow-hidden bg-[#141814] border border-white/[0.08] hover:border-[#A3FF12]/40 transition-all duration-300 cursor-pointer flex flex-col h-full hover:shadow-[0_0_25px_rgba(163,255,18,0.12)]"
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onSelect(project);
+        }
+      }}
+      tabIndex={0}
+      role="button"
+      aria-label={`View ${project.name} details`}
+      className="group relative rounded-xl overflow-hidden bg-[#141814] border border-white/[0.08] hover:border-[#A3FF12]/40 transition-all duration-300 cursor-pointer flex flex-col h-full hover:shadow-[0_0_25px_rgba(163,255,18,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A3FF12] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080908]"
       id={`project-card-${project.id}`}
     >
       {/* Top Image Container */}
